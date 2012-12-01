@@ -4,7 +4,7 @@ setup(
     name = 'xcri',
     version = '1.0.0',
     packages = find_packages(),
-    install_requires = ['suds'],
+    install_requires = ['suds', 'requests'],
     url = 'https://github.com/CottageLabs/xcri',
     author = ['Richard Jones', 'Mark MacGillivray']
     author_email = ['richard@cottagelabs.com', 'mark@cottagelabs.com']

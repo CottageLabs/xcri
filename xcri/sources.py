@@ -13,3 +13,10 @@ soap_endpoints = [
         "arguments" : ["10011155", "10000812"]
     }
 ]
+
+rest_endpoints = [
+    {
+        "name" : "AdamSmithCollege",
+        "resource_url": "http://www.adamsmith.ac.uk/onlineresources/ictassets/xcri/cap.xml"
+    }
+]
