@@ -17,6 +17,15 @@ soap_endpoints = [
 rest_endpoints = [
     {
         "name" : "AdamSmithCollege",
-        "resource_url": "http://www.adamsmith.ac.uk/onlineresources/ictassets/xcri/cap.xml"
-    }
+        "resource_url": "http://www.adamsmith.ac.uk/onlineresources/ictassets/xcri/cap.xml",
+        "xcri_version" : "1.2"
+    },
+    
+    {
+        "name" : "Bradford College",
+        "resource_url": "http://www2.bradfordcollege.ac.uk/bradfordcollege.xml",
+        "xcri_version" : "1.1"
+    },
+    
+    
 ]
