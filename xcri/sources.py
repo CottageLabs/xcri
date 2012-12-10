@@ -1,3 +1,18 @@
+import json
+
+class Endpoints(object):
+
+    def __init__(self, source_file_path):
+        self.source_file_path = source_file_path
+        self.source = json.load(open(self.source_file_path))
+    
+    def soap_endpoints(self):
+        return [e for e in self.source if e['type'] == "SOAP"]
+        
+    def rest_endpoints(self):
+        return [e for e in self.source if e['type'] == "REST"]
+    
+"""
 soap_endpoints = [
     {
         "name" : "OpenUniversity",
@@ -29,3 +44,4 @@ rest_endpoints = [
     
     
 ]
+"""

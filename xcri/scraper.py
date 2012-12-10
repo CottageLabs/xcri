@@ -155,6 +155,8 @@ elif MODE == "sources":
             record['resource_url'] = data
         elif type == "SOAP":
             record['wsdl_url'] = data
+            record["operation"] = "getCourses"
+            record["arguments"] = []
         
         record['website'] = website
         record['type'] = type
