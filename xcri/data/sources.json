@@ -1,0 +1,628 @@
+[
+    {
+        "website": "http://www.xxp.org/getlincscourses.html", 
+        "name": "Tennyson High School (14-19)", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1046", 
+        "wsdl_url": "http://host.igsl.co.uk:7101/Lincs-webservice-context-root/xxpSoapHttpPort?WSDL", 
+        "version": "1.1", 
+        "arguments": ["10017033"], 
+        "operation": "getLincsCourses", 
+        "type": "SOAP"
+    }, 
+    {
+        "website": "http://www.xxp.org/getlincscourses.html", 
+        "name": "Walton Girls High School (14-19)", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1047", 
+        "wsdl_url": "http://host.igsl.co.uk:7101/Lincs-webservice-context-root/xxpSoapHttpPort?WSDL", 
+        "version": "1.1", 
+        "arguments": ["10013314"], 
+        "operation": "getLincsCourses", 
+        "type": "SOAP"
+    }, 
+    {
+        "website": "http://www.xxp.org/getlincscourses.html", 
+        "name": "Wolds College (FE)", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1048", 
+        "wsdl_url": "http://host.igsl.co.uk:7101/Lincs-webservice-context-root/xxpSoapHttpPort?WSDL", 
+        "version": "1.1", 
+        "arguments": ["10022722"], 
+        "operation": "getLincsCourses", 
+        "type": "SOAP"
+    }, 
+    {
+        "website": "http://www.xxp.org/getlincscourses.html", 
+        "name": "Yarborough School (14-19)", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1049", 
+        "wsdl_url": "http://host.igsl.co.uk:7101/Lincs-webservice-context-root/xxpSoapHttpPort?WSDL", 
+        "version": "1.1", 
+        "arguments": ["10013296"], 
+        "operation": "getLincsCourses", 
+        "type": "SOAP"
+    }, 
+    {
+        "website": "http://www.xxp.org/getxcritest.html", 
+        "name": "Test  feed", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1051", 
+        "wsdl_url": "http://xxp.igsl.co.uk/app/xxpPort?WSDL", 
+        "version": "1.2", 
+        "arguments": ["X001008-a"], 
+        "operation": "getCourses12", 
+        "type": "SOAP"
+    }, 
+    {
+        "website": "http://www.xxp.org/getlincscourses.html", 
+        "name": "Spalding High School (14-19)", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1044", 
+        "wsdl_url": "http://host.igsl.co.uk:7101/Lincs-webservice-context-root/xxpSoapHttpPort?WSDL", 
+        "version": "1.1", 
+        "arguments": ["10006049"], 
+        "operation": "getLincsCourses", 
+        "type": "SOAP"
+    }, 
+    {
+        "website": "http://www.xxp.org/getlincscourses.html", 
+        "name": "St Peter and St Paul Catholic High School (14-19)", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1045", 
+        "wsdl_url": "http://host.igsl.co.uk:7101/Lincs-webservice-context-root/xxpSoapHttpPort?WSDL", 
+        "version": "1.1", 
+        "arguments": ["10006248"], 
+        "operation": "getLincsCourses", 
+        "type": "SOAP"
+    }, 
+    {
+        "website": "http://www.xxp.org/getxcritest.html", 
+        "name": "Test  feed", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1053", 
+        "version": "1.2", 
+        "resource_url": "http://xxp.igsl.co.uk/app/xcricap/12/X001008-a", 
+        "type": "REST"
+    }, 
+    {
+        "website": "http://llnmoodle.worc.ac.uk/portalmoodle/course/view.php?id=51", 
+        "name": "University of Worcester", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1054", 
+        "version": "1.1", 
+        "resource_url": "http://llnmoodle.worc.ac.uk/portalmoodle/file.php/51/final_uwxcr.xml", 
+        "type": "REST"
+    }, 
+    {
+        "website": "http://www.wychwolf.com/moodle/", 
+        "name": "Test Uni", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1055", 
+        "version": "1.1", 
+        "resource_url": "http://www.xxp.org/getxcri/X001008_11.xml", 
+        "type": "REST"
+    }, 
+    {
+        "website": "http://www3.open.ac.uk/occam/courseinfo.asmx", 
+        "name": "Open University (OCCAM)", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1056", 
+        "wsdl_url": "http://www3.open.ac.uk/occam/courseinfo.asmx?WSDL", 
+        "version": "1.0", 
+        "arguments": [], 
+        "operation": "getCourse", 
+        "type": "SOAP"
+    }, 
+    {
+        "website": "http://www.xcri.co.uk/examples-a-code/272-sample-xcri-cap-12-instance-file-for-the-open-university.html", 
+        "name": "Open University (Test feed)", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1057", 
+        "version": "1.2", 
+        "resource_url": "http://www.xcri.co.uk/KbLibrary/SampleOUXCRI1_2.xml", 
+        "type": "REST"
+    }, 
+    {
+        "website": "", 
+        "name": "CPD courses", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1061", 
+        "version": "1.2", 
+        "resource_url": "CPD courses", 
+        "type": "REST"
+    }, 
+    {
+        "website": "", 
+        "name": "CPD courses", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1058", 
+        "wsdl_url": "CPD courses", 
+        "version": "1.1", 
+        "arguments": ["X010181-4"], 
+        "operation": "getXCRI", 
+        "type": "SOAP"
+    }, 
+    {
+        "website": "", 
+        "name": "CPD courses", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1059", 
+        "wsdl_url": "CPD courses", 
+        "version": "1.2", 
+        "arguments": ["X010181-4"], 
+        "operation": "getXCRI", 
+        "type": "SOAP"
+    }, 
+    {
+        "website": "", 
+        "name": "CPD courses", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1060", 
+        "version": "1.1", 
+        "resource_url": "CPD courses", 
+        "type": "REST"
+    }, 
+    {
+        "website": "", 
+        "name": "PT courses", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1068", 
+        "version": "1.1", 
+        "resource_url": "CPD courses", 
+        "type": "REST"
+    }, 
+    {
+        "website": "", 
+        "name": "PT courses", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1067", 
+        "wsdl_url": "CPD courses", 
+        "version": "1.2", 
+        "arguments": ["X010181-10"], 
+        "operation": "getXCRI", 
+        "type": "SOAP"
+    }, 
+    {
+        "website": "", 
+        "name": "PT courses", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1066", 
+        "wsdl_url": "CPD courses", 
+        "version": "1.1", 
+        "arguments": ["X010181-9"], 
+        "operation": "getXCRI", 
+        "type": "SOAP"
+    }, 
+    {
+        "website": "", 
+        "name": "PT courses", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1069", 
+        "version": "1.2", 
+        "resource_url": "CPD courses", 
+        "type": "REST"
+    }, 
+    {
+        "website": "", 
+        "name": "XCRI Feed Current", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1070", 
+        "version": "1.1", 
+        "resource_url": "http://www.nnc.ac.uk/xcri.aspx?qnid=F005", 
+        "type": "REST"
+    }, 
+    {
+        "website": "", 
+        "name": "Open University", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1000", 
+        "version": "1.1", 
+        "resource_url": "http://www3.open.ac.uk/study/feeds/ou-xcri-cap.xml", 
+        "type": "REST"
+    }, 
+    {
+        "website": "http://www.adamsmith.ac.uk", 
+        "name": "Adam Smith College", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1001", 
+        "version": "1.2", 
+        "resource_url": "http://www.adamsmith.ac.uk/onlineresources/ictassets/xcri/cap.xml", 
+        "type": "REST"
+    }, 
+    {
+        "website": "", 
+        "name": "University of Bolton", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1002", 
+        "version": "1.1", 
+        "resource_url": "http://www.bolton.ac.uk/xcri/xcri.asp", 
+        "type": "REST"
+    }, 
+    {
+        "website": "", 
+        "name": "Bradford College", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1003", 
+        "version": "1.1", 
+        "resource_url": "http://www2.bradfordcollege.ac.uk/bradfordcollege.xml", 
+        "type": "REST"
+    }, 
+    {
+        "website": "", 
+        "name": "Derby College", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1004", 
+        "version": "1.1", 
+        "resource_url": "http://www.derby-college.ac.uk/scripts/xcri/derby-college_course_export.xcri.xml", 
+        "type": "REST"
+    }, 
+    {
+        "website": "", 
+        "name": "Edge Hill", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1005", 
+        "version": "1.1", 
+        "resource_url": "http://www.edgehill.ac.uk/study/courses/xcri", 
+        "type": "REST"
+    }, 
+    {
+        "website": "", 
+        "name": "University of Lincoln", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1006", 
+        "version": "1.1", 
+        "resource_url": "http://www.lincoln.ac.uk/componants/xml/ULprogrammes_xcri.xml", 
+        "type": "REST"
+    }, 
+    {
+        "website": "", 
+        "name": "New College Nottingham", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1007", 
+        "version": "1.1", 
+        "resource_url": "http://www.ncn.ac.uk/webservices/xcri/xcrix.asmx/CourseList", 
+        "type": "REST"
+    }, 
+    {
+        "website": "", 
+        "name": "Northampton College", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1009", 
+        "version": "1.1", 
+        "resource_url": "http://www.northamptoncollege.ac.uk/xcri/", 
+        "type": "REST"
+    }, 
+    {
+        "website": "", 
+        "name": "West Nottinghamshire College", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1010", 
+        "version": "1.1", 
+        "resource_url": "http://www.wnc.ac.uk/feeds/courses.xml", 
+        "type": "REST"
+    }, 
+    {
+        "website": "http://www.yourfuture-eastmidlands.co.uk/services/service.asmx", 
+        "name": "Your Future - East Midlands", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1011", 
+        "wsdl_url": "http://www.yourfuture-eastmidlands.co.uk/services/service.asmx?WSDL", 
+        "version": "1.1", 
+        "arguments": [], 
+        "operation": "getXCRI", 
+        "type": "SOAP"
+    }, 
+    {
+        "website": "", 
+        "name": "Connexions Derbyshire / Routes Ahead", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1012", 
+        "version": "1.1", 
+        "resource_url": "http://www.routes-ahead.org/utils/ra_xcri_export.asp", 
+        "type": "REST"
+    }, 
+    {
+        "website": "http://www.xxp.org/getoucourses.html", 
+        "name": "Open University (HE UG/PG/ALL)", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1013", 
+        "wsdl_url": "http://host.igsl.co.uk:7101/OU-webservice-context-root/xxpSoapHttpPort?WSDL", 
+        "version": "1.1", 
+        "arguments": ["ALL"], 
+        "operation": "getOUCourses", 
+        "type": "SOAP"
+    }, 
+    {
+        "website": "http://www.xxp.org/gethycourses.html", 
+        "name": "University of York (CPD)", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1014", 
+        "wsdl_url": "http://host.igsl.co.uk/xxp/webform/xxpHYSoap12HttpPort?WSDL", 
+        "version": "1.1", 
+        "arguments": ["X010223"], 
+        "operation": "getCourses", 
+        "type": "SOAP"
+    }, 
+    {
+        "website": "http://www.xxp.org/gethycourses.html", 
+        "name": "York St John University (CPD)", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1015", 
+        "wsdl_url": "http://host.igsl.co.uk/xxp/webform/xxpHYSoap12HttpPort?WSDL", 
+        "version": "1.1", 
+        "arguments": ["X010231"], 
+        "operation": "getCourses", 
+        "type": "SOAP"
+    }, 
+    {
+        "website": "http://www.xxp.org/gethycourses.html", 
+        "name": "Craven College (CPD)", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1016", 
+        "wsdl_url": "http://host.igsl.co.uk/xxp/webform/xxpHYSoap12HttpPort?WSDL", 
+        "version": "1.1", 
+        "arguments": ["X010215"], 
+        "operation": "getCourses", 
+        "type": "SOAP"
+    }, 
+    {
+        "website": "http://www.xxp.org/getlincscourses.html", 
+        "name": "Birkbeck School and Community Arts College (FE)", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1017", 
+        "wsdl_url": "http://host.igsl.co.uk:7101/Lincs-webservice-context-root/xxpSoapHttpPort?WSDL", 
+        "version": "1.1", 
+        "arguments": ["10011155"], 
+        "operation": "getLincsCourses", 
+        "type": "SOAP"
+    }, 
+    {
+        "website": "http://www.xxp.org/getlincscourses.html", 
+        "name": "Boston College (FE)", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1018", 
+        "wsdl_url": "http://host.igsl.co.uk:7101/Lincs-webservice-context-root/xxpSoapHttpPort?WSDL", 
+        "version": "1.1", 
+        "arguments": ["10000812"], 
+        "operation": "getLincsCourses", 
+        "type": "SOAP"
+    }, 
+    {
+        "website": "http://www.xxp.org/getlincscourses.html", 
+        "name": "Bourne Grammar School (14-19)", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1019", 
+        "wsdl_url": "http://host.igsl.co.uk:7101/Lincs-webservice-context-root/xxpSoapHttpPort?WSDL", 
+        "version": "1.1", 
+        "arguments": ["10000818"], 
+        "operation": "getLincsCourses", 
+        "type": "SOAP"
+    }, 
+    {
+        "website": "http://www.xxp.org/getlincscourses.html", 
+        "name": "Branston Community College (FE)", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1020", 
+        "wsdl_url": "http://host.igsl.co.uk:7101/Lincs-webservice-context-root/xxpSoapHttpPort?WSDL", 
+        "version": "1.1", 
+        "arguments": ["10000856"], 
+        "operation": "getLincsCourses", 
+        "type": "SOAP"
+    }, 
+    {
+        "website": "http://www.xxp.org/getlincscourses.html", 
+        "name": "Caistor Grammar School (14-19)", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1021", 
+        "wsdl_url": "http://host.igsl.co.uk:7101/Lincs-webservice-context-root/xxpSoapHttpPort?WSDL", 
+        "version": "1.1", 
+        "arguments": ["10001087"], 
+        "operation": "getLincsCourses", 
+        "type": "SOAP"
+    }, 
+    {
+        "website": "http://www.xxp.org/getlincscourses.html", 
+        "name": "Cordeaux School (14-19)", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1022", 
+        "wsdl_url": "http://host.igsl.co.uk:7101/Lincs-webservice-context-root/xxpSoapHttpPort?WSDL", 
+        "version": "1.1", 
+        "arguments": ["10001688"], 
+        "operation": "getLincsCourses", 
+        "type": "SOAP"
+    }, 
+    {
+        "website": "http://www.xxp.org/getlincscourses.html", 
+        "name": "De Aston School (14-19)", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1023", 
+        "wsdl_url": "http://host.igsl.co.uk:7101/Lincs-webservice-context-root/xxpSoapHttpPort?WSDL", 
+        "version": "1.1", 
+        "arguments": ["10001878"], 
+        "operation": "getLincsCourses", 
+        "type": "SOAP"
+    }, 
+    {
+        "website": "http://www.xxp.org/getlincscourses.html", 
+        "name": "Deepings School (14-19)", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1024", 
+        "wsdl_url": "http://host.igsl.co.uk:7101/Lincs-webservice-context-root/xxpSoapHttpPort?WSDL", 
+        "version": "1.1", 
+        "arguments": ["10001902"], 
+        "operation": "getLincsCourses", 
+        "type": "SOAP"
+    }, 
+    {
+        "website": "http://www.xxp.org/getlincscourses.html", 
+        "name": "George Farmer Technology and Language College (FE)", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1025", 
+        "wsdl_url": "http://host.igsl.co.uk:7101/Lincs-webservice-context-root/xxpSoapHttpPort?WSDL", 
+        "version": "1.1", 
+        "arguments": ["10013322"], 
+        "operation": "getLincsCourses", 
+        "type": "SOAP"
+    }, 
+    {
+        "website": "http://www.xxp.org/getlincscourses.html", 
+        "name": "Giles School (14-19)", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1026", 
+        "wsdl_url": "http://host.igsl.co.uk:7101/Lincs-webservice-context-root/xxpSoapHttpPort?WSDL", 
+        "version": "1.1", 
+        "arguments": ["10002669"], 
+        "operation": "getLincsCourses", 
+        "type": "SOAP"
+    }, 
+    {
+        "website": "http://www.xxp.org/getlincscourses.html", 
+        "name": "Grantham College (FE)", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1027", 
+        "wsdl_url": "http://host.igsl.co.uk:7101/Lincs-webservice-context-root/xxpSoapHttpPort?WSDL", 
+        "version": "1.1", 
+        "arguments": ["10002743"], 
+        "operation": "getLincsCourses", 
+        "type": "SOAP"
+    }, 
+    {
+        "website": "http://www.xxp.org/getlincscourses.html", 
+        "name": "Kesteven and Grantham Girls School (14-19)", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1028", 
+        "wsdl_url": "http://host.igsl.co.uk:7101/Lincs-webservice-context-root/xxpSoapHttpPort?WSDL", 
+        "version": "1.1", 
+        "arguments": ["10003580"], 
+        "operation": "getLincsCourses", 
+        "type": "SOAP"
+    }, 
+    {
+        "website": "http://www.xxp.org/getlincscourses.html", 
+        "name": "King Edward VI Grammar School (14-19)", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1029", 
+        "wsdl_url": "http://host.igsl.co.uk:7101/Lincs-webservice-context-root/xxpSoapHttpPort?WSDL", 
+        "version": "1.1", 
+        "arguments": ["10003628"], 
+        "operation": "getLincsCourses", 
+        "type": "SOAP"
+    }, 
+    {
+        "website": "http://www.xxp.org/getlincscourses.html", 
+        "name": "King Edward VI Humanities College (FE)", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1030", 
+        "wsdl_url": "http://host.igsl.co.uk:7101/Lincs-webservice-context-root/xxpSoapHttpPort?WSDL", 
+        "version": "1.1", 
+        "arguments": ["10014049"], 
+        "operation": "getLincsCourses", 
+        "type": "SOAP"
+    }, 
+    {
+        "website": "http://www.xxp.org/getlincscourses.html", 
+        "name": "Kings School, Grantham (14-19)", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1031", 
+        "wsdl_url": "http://host.igsl.co.uk:7101/Lincs-webservice-context-root/xxpSoapHttpPort?WSDL", 
+        "version": "1.1", 
+        "arguments": ["10003648"], 
+        "operation": "getLincsCourses", 
+        "type": "SOAP"
+    }, 
+    {
+        "website": "http://www.xxp.org/getlincscourses.html", 
+        "name": "Lincoln Christs Hospital School (14-19)", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1032", 
+        "wsdl_url": "http://host.igsl.co.uk:7101/Lincs-webservice-context-root/xxpSoapHttpPort?WSDL", 
+        "version": "1.1", 
+        "arguments": ["10003926"], 
+        "operation": "getLincsCourses", 
+        "type": "SOAP"
+    }, 
+    {
+        "website": "http://www.xxp.org/getlincscourses.html", 
+        "name": "Monks Dyke Technology College (FE)", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1033", 
+        "wsdl_url": "http://host.igsl.co.uk:7101/Lincs-webservice-context-root/xxpSoapHttpPort?WSDL", 
+        "version": "1.1", 
+        "arguments": ["10004418"], 
+        "operation": "getLincsCourses", 
+        "type": "SOAP"
+    }, 
+    {
+        "website": "http://www.xxp.org/getlincscourses.html", 
+        "name": "Newark College (FE)", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1034", 
+        "wsdl_url": "http://host.igsl.co.uk:7101/Lincs-webservice-context-root/xxpSoapHttpPort?WSDL", 
+        "version": "1.1", 
+        "arguments": ["10003928"], 
+        "operation": "getLincsCourses", 
+        "type": "SOAP"
+    }, 
+    {
+        "website": "http://www.xxp.org/getlincscourses.html", 
+        "name": "North Hykeham Joint Sixth Form (14-19)", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1035", 
+        "wsdl_url": "http://host.igsl.co.uk:7101/Lincs-webservice-context-root/xxpSoapHttpPort?WSDL", 
+        "version": "1.1", 
+        "arguments": ["10014004"], 
+        "operation": "getLincsCourses", 
+        "type": "SOAP"
+    }, 
+    {
+        "website": "http://www.xxp.org/getlincscourses.html", 
+        "name": "Priory Academy LSST (14-19)", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1036", 
+        "wsdl_url": "http://host.igsl.co.uk:7101/Lincs-webservice-context-root/xxpSoapHttpPort?WSDL", 
+        "version": "1.1", 
+        "arguments": ["10024304"], 
+        "operation": "getLincsCourses", 
+        "type": "SOAP"
+    }, 
+    {
+        "website": "http://www.xxp.org/getlincscourses.html", 
+        "name": "Priory City of Lincoln Academy (14-19)", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1037", 
+        "wsdl_url": "http://host.igsl.co.uk:7101/Lincs-webservice-context-root/xxpSoapHttpPort?WSDL", 
+        "version": "1.1", 
+        "arguments": ["10024303"], 
+        "operation": "getLincsCourses", 
+        "type": "SOAP"
+    }, 
+    {
+        "website": "http://www.xxp.org/getlincscourses.html", 
+        "name": "Queen Elizabeths Grammar School, Alford (14-19)", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1038", 
+        "wsdl_url": "http://host.igsl.co.uk:7101/Lincs-webservice-context-root/xxpSoapHttpPort?WSDL", 
+        "version": "1.1", 
+        "arguments": ["10007988"], 
+        "operation": "getLincsCourses", 
+        "type": "SOAP"
+    }, 
+    {
+        "website": "http://www.xxp.org/getlincscourses.html", 
+        "name": "Queen Elizabeths Grammar School, Horncastle (14-19)", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1039", 
+        "wsdl_url": "http://host.igsl.co.uk:7101/Lincs-webservice-context-root/xxpSoapHttpPort?WSDL", 
+        "version": "1.1", 
+        "arguments": ["10005330"], 
+        "operation": "getLincsCourses", 
+        "type": "SOAP"
+    }, 
+    {
+        "website": "http://www.xxp.org/getlincscourses.html", 
+        "name": "Queen Elizabeths High School (14-19)", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1040", 
+        "wsdl_url": "http://host.igsl.co.uk:7101/Lincs-webservice-context-root/xxpSoapHttpPort?WSDL", 
+        "version": "1.1", 
+        "arguments": ["10005331"], 
+        "operation": "getLincsCourses", 
+        "type": "SOAP"
+    }, 
+    {
+        "website": "http://www.xxp.org/getlincscourses.html", 
+        "name": "Robert Manning College (FE)", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1041", 
+        "wsdl_url": "http://host.igsl.co.uk:7101/Lincs-webservice-context-root/xxpSoapHttpPort?WSDL", 
+        "version": "1.1", 
+        "arguments": ["10005501"], 
+        "operation": "getLincsCourses", 
+        "type": "SOAP"
+    }, 
+    {
+        "website": "http://www.xxp.org/getlincscourses.html", 
+        "name": "Skegness Grammar School (14-19)", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1042", 
+        "wsdl_url": "http://host.igsl.co.uk:7101/Lincs-webservice-context-root/xxpSoapHttpPort?WSDL", 
+        "version": "1.1", 
+        "arguments": ["10005884"], 
+        "operation": "getLincsCourses", 
+        "type": "SOAP"
+    }, 
+    {
+        "website": "http://www.xxp.org/getlincscourses.html", 
+        "name": "Spalding Grammar School (14-19)", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1043", 
+        "wsdl_url": "http://host.igsl.co.uk:7101/Lincs-webservice-context-root/xxpSoapHttpPort?WSDL", 
+        "version": "1.1", 
+        "arguments": ["10006048"], 
+        "operation": "getLincsCourses", 
+        "type": "SOAP"
+    }, 
+    {
+        "website": "", 
+        "name": "CSV to XCRICAP by XXP", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1071", 
+        "wsdl_url": "http://xxp.igsl.co.uk/app/xxpPort?WSDL", 
+        "version": "1.2", 
+        "arguments": ["X001008-1"], 
+        "operation": "getCourses12", 
+        "type": "SOAP"
+    }, 
+    {
+        "website": "", 
+        "name": "CSV to XCRICAP by XXP", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1072", 
+        "version": "1.2", 
+        "resource_url": "http://xxp.igsl.co.uk/app/xcricap/12/X001008-1", 
+        "type": "REST"
+    }, 
+    {
+        "website": "www.cornwall.ac.uk", 
+        "name": "Cornwall College", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1073", 
+        "version": "1.2", 
+        "resource_url": "http://www.cornwall.ac.uk/XCRI.xml", 
+        "type": "REST"
+    }
+]

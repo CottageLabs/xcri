@@ -1,0 +1,337 @@
+[
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1046", 
+        "version": "1.1", 
+        "name": "Tennyson High School (14-19)"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1047", 
+        "version": "1.1", 
+        "name": "Walton Girls High School (14-19)"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1048", 
+        "version": "1.1", 
+        "name": "Wolds College (FE)"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1049", 
+        "version": "1.1", 
+        "name": "Yarborough School (14-19)"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1051", 
+        "version": "1.2", 
+        "name": "Test  feed"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1044", 
+        "version": "1.1", 
+        "name": "Spalding High School (14-19)"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1045", 
+        "version": "1.1", 
+        "name": "St Peter and St Paul Catholic High School (14-19)"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1053", 
+        "version": "1.2", 
+        "name": "Test  feed"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1054", 
+        "version": "1.1", 
+        "name": "University of Worcester"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1055", 
+        "version": "1.1", 
+        "name": "Test Uni"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1056", 
+        "version": "1.0", 
+        "name": "Open University (OCCAM)"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1057", 
+        "version": "1.2", 
+        "name": "Open University (Test feed)"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1061", 
+        "version": "1.2", 
+        "name": "CPD courses"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1058", 
+        "version": "1.1", 
+        "name": "CPD courses"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1059", 
+        "version": "1.2", 
+        "name": "CPD courses"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1060", 
+        "version": "1.1", 
+        "name": "CPD courses"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1068", 
+        "version": "1.1", 
+        "name": "PT courses"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1067", 
+        "version": "1.2", 
+        "name": "PT courses"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1066", 
+        "version": "1.1", 
+        "name": "PT courses"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1069", 
+        "version": "1.2", 
+        "name": "PT courses"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1070", 
+        "version": "1.1", 
+        "name": "XCRI Feed Current"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1000", 
+        "version": "1.1", 
+        "name": "Open University"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1001", 
+        "version": "1.2", 
+        "name": "Adam Smith College"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1002", 
+        "version": "1.1", 
+        "name": "University of Bolton"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1003", 
+        "version": "1.1", 
+        "name": "Bradford College"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1004", 
+        "version": "1.1", 
+        "name": "Derby College"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1005", 
+        "version": "1.1", 
+        "name": "Edge Hill"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1006", 
+        "version": "1.1", 
+        "name": "University of Lincoln"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1007", 
+        "version": "1.1", 
+        "name": "New College Nottingham"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1009", 
+        "version": "1.1", 
+        "name": "Northampton College"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1010", 
+        "version": "1.1", 
+        "name": "West Nottinghamshire College"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1011", 
+        "version": "1.1", 
+        "name": "Your Future - East Midlands"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1012", 
+        "version": "1.1", 
+        "name": "Connexions Derbyshire / Routes Ahead"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1013", 
+        "version": "1.1", 
+        "name": "Open University (HE UG/PG/ALL)"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1014", 
+        "version": "1.1", 
+        "name": "University of York (CPD)"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1015", 
+        "version": "1.1", 
+        "name": "York St John University (CPD)"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1016", 
+        "version": "1.1", 
+        "name": "Craven College (CPD)"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1017", 
+        "version": "1.1", 
+        "name": "Birkbeck School and Community Arts College (FE)"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1018", 
+        "version": "1.1", 
+        "name": "Boston College (FE)"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1019", 
+        "version": "1.1", 
+        "name": "Bourne Grammar School (14-19)"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1020", 
+        "version": "1.1", 
+        "name": "Branston Community College (FE)"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1021", 
+        "version": "1.1", 
+        "name": "Caistor Grammar School (14-19)"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1022", 
+        "version": "1.1", 
+        "name": "Cordeaux School (14-19)"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1023", 
+        "version": "1.1", 
+        "name": "De Aston School (14-19)"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1024", 
+        "version": "1.1", 
+        "name": "Deepings School (14-19)"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1025", 
+        "version": "1.1", 
+        "name": "George Farmer Technology and Language College (FE)"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1026", 
+        "version": "1.1", 
+        "name": "Giles School (14-19)"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1027", 
+        "version": "1.1", 
+        "name": "Grantham College (FE)"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1028", 
+        "version": "1.1", 
+        "name": "Kesteven and Grantham Girls School (14-19)"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1029", 
+        "version": "1.1", 
+        "name": "King Edward VI Grammar School (14-19)"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1030", 
+        "version": "1.1", 
+        "name": "King Edward VI Humanities College (FE)"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1031", 
+        "version": "1.1", 
+        "name": "Kings School, Grantham (14-19)"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1032", 
+        "version": "1.1", 
+        "name": "Lincoln Christs Hospital School (14-19)"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1033", 
+        "version": "1.1", 
+        "name": "Monks Dyke Technology College (FE)"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1034", 
+        "version": "1.1", 
+        "name": "Newark College (FE)"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1035", 
+        "version": "1.1", 
+        "name": "North Hykeham Joint Sixth Form (14-19)"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1036", 
+        "version": "1.1", 
+        "name": "Priory Academy LSST (14-19)"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1037", 
+        "version": "1.1", 
+        "name": "Priory City of Lincoln Academy (14-19)"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1038", 
+        "version": "1.1", 
+        "name": "Queen Elizabeths Grammar School, Alford (14-19)"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1039", 
+        "version": "1.1", 
+        "name": "Queen Elizabeths Grammar School, Horncastle (14-19)"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1040", 
+        "version": "1.1", 
+        "name": "Queen Elizabeths High School (14-19)"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1041", 
+        "version": "1.1", 
+        "name": "Robert Manning College (FE)"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1042", 
+        "version": "1.1", 
+        "name": "Skegness Grammar School (14-19)"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1043", 
+        "version": "1.1", 
+        "name": "Spalding Grammar School (14-19)"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1071", 
+        "version": "1.2", 
+        "name": "CSV to XCRICAP by XXP"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1072", 
+        "version": "1.2", 
+        "name": "CSV to XCRICAP by XXP"
+    }, 
+    {
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1073", 
+        "version": "1.2", 
+        "name": "Cornwall College"
+    }
+]
