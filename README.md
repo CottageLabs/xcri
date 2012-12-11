@@ -81,9 +81,13 @@ For each source, the obtain.py script will request either the resource_url (for 
 
 To invoke the obtain.py script, just use:
 
-    python obtain.py <sources json file> <output dir>
-    
-Where <outdir> is the directory you'd like to write the resulting files to.  File names will be of the form:
+    python obtain.py -s <sources json file> -o <output dir>
+
+You can also find the full list of arguments supported by obtain.py, by using:
+
+    python obtain.py --help
+
+"output dir" is the directory you'd like to write the resulting files to.  File names will be of the form:
 
     <service name>[_<argument>].xml
 

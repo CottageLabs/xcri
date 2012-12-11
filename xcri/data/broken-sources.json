@@ -1,0 +1,168 @@
+[
+    {
+        "website": "http://www.xxp.org/getxcritest.html", 
+        "name": "Test  feed", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1051", 
+        "wsdl_url": "http://xxp.igsl.co.uk/app/xxpPort?WSDL", 
+        "version": "1.2", 
+        "arguments": ["X001008-a"], 
+        "operation": "getCourses12", 
+        "type": "SOAP",
+        "problem" : "Responds with 415 Unsupported Media Type"
+    },
+    {
+        "website": "", 
+        "name": "CPD courses", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1061", 
+        "version": "1.2", 
+        "resource_url": "CPD courses", 
+        "type": "REST",
+        "problem" : "No url"
+    }, 
+    {
+        "website": "", 
+        "name": "CPD courses", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1058", 
+        "wsdl_url": "CPD courses", 
+        "version": "1.1", 
+        "arguments": ["X010181-4"], 
+        "operation": "getXCRI", 
+        "type": "SOAP",
+        "problem" : "No url"
+    }, 
+    {
+        "website": "", 
+        "name": "CPD courses", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1059", 
+        "wsdl_url": "CPD courses", 
+        "version": "1.2", 
+        "arguments": ["X010181-4"], 
+        "operation": "getXCRI", 
+        "type": "SOAP",
+        "problem" : "No url"
+    }, 
+    {
+        "website": "", 
+        "name": "CPD courses", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1060", 
+        "version": "1.1", 
+        "resource_url": "CPD courses", 
+        "type": "REST",
+        "problem" : "No url"
+    }, 
+    {
+        "website": "", 
+        "name": "PT courses", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1068", 
+        "version": "1.1", 
+        "resource_url": "CPD courses", 
+        "type": "REST",
+        "problem" : "No url"
+    }, 
+    {
+        "website": "", 
+        "name": "PT courses", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1067", 
+        "wsdl_url": "CPD courses", 
+        "version": "1.2", 
+        "arguments": ["X010181-10"], 
+        "operation": "getXCRI", 
+        "type": "SOAP",
+        "problem" : "No url"
+    }, 
+    {
+        "website": "", 
+        "name": "PT courses", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1066", 
+        "wsdl_url": "CPD courses", 
+        "version": "1.1", 
+        "arguments": ["X010181-9"], 
+        "operation": "getXCRI", 
+        "type": "SOAP",
+        "problem" : "No url"
+    }, 
+    {
+        "website": "", 
+        "name": "PT courses", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1069", 
+        "version": "1.2", 
+        "resource_url": "CPD courses", 
+        "type": "REST",
+        "problem" : "No url"
+    },
+    {
+        "website": "http://www.yourfuture-eastmidlands.co.uk/services/service.asmx", 
+        "name": "Your Future - East Midlands", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1011", 
+        "wsdl_url": "http://www.yourfuture-eastmidlands.co.uk/services/service.asmx?WSDL", 
+        "version": "1.1", 
+        "arguments": [], 
+        "operation": "getXCRI", 
+        "type": "SOAP",
+        "problem" : "Unable to locate a list of valid UKPRNs to use against the web service"
+    }, 
+    {
+        "website": "http://www3.open.ac.uk/occam/courseinfo.asmx", 
+        "name": "Open University (OCCAM)", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1056", 
+        "wsdl_url": "http://www3.open.ac.uk/occam/courseinfo.asmx?WSDL", 
+        "version": "1.0", 
+        "arguments": [], 
+        "operation": "getCourse", 
+        "type": "SOAP",
+        "problem": "returned document structure is too complex for automated analysis"
+    }, 
+    {
+        "website": "http://www.xxp.org/gethycourses.html", 
+        "name": "University of York (CPD)", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1014", 
+        "wsdl_url": "http://host.igsl.co.uk/xxp/webform/xxpHYSoap12HttpPort?WSDL", 
+        "version": "1.1", 
+        "arguments": ["X010223"], 
+        "operation": "getCourses", 
+        "type": "SOAP",
+        "problem": "Responds with 415 Unsupported Media Type"
+    },
+    {
+        "website": "http://www.xxp.org/gethycourses.html", 
+        "name": "York St John University (CPD)", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1015", 
+        "wsdl_url": "http://host.igsl.co.uk/xxp/webform/xxpHYSoap12HttpPort?WSDL", 
+        "version": "1.1", 
+        "arguments": ["X010231"], 
+        "operation": "getCourses", 
+        "type": "SOAP",
+        "problem": "Responds with 415 Unsupported Media Type"
+    }, 
+    {
+        "website": "http://www.xxp.org/gethycourses.html", 
+        "name": "Craven College (CPD)", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1016", 
+        "wsdl_url": "http://host.igsl.co.uk/xxp/webform/xxpHYSoap12HttpPort?WSDL", 
+        "version": "1.1", 
+        "arguments": ["X010215"], 
+        "operation": "getCourses", 
+        "type": "SOAP",
+        "problem": "Responds with 415 Unsupported Media Type"
+    }, 
+    {
+        "website": "", 
+        "name": "CSV to XCRICAP by XXP", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1071", 
+        "wsdl_url": "http://xxp.igsl.co.uk/app/xxpPort?WSDL", 
+        "version": "1.2", 
+        "arguments": ["X001008-1"], 
+        "operation": "getCourses12", 
+        "type": "SOAP",
+        "problem": "Responds with 415 Unsupported Media Type"
+    }, 
+    {
+        "website": "", 
+        "name": "Edge Hill", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1005", 
+        "version": "1.1", 
+        "resource_url": "http://www.edgehill.ac.uk/study/courses/xcri", 
+        "type": "REST",
+        "problem": "timeout/no data from server"
+    }, 
+]
