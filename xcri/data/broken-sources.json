@@ -165,4 +165,49 @@
         "type": "REST",
         "problem": "timeout/no data from server"
     }, 
+    {
+        "website": "", 
+        "name": "Derby College", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1004", 
+        "version": "1.1", 
+        "resource_url": "http://www.derby-college.ac.uk/scripts/xcri/derby-college_course_export.xcri.xml", 
+        "type": "REST",
+        "problem" : "Returns 500 error"
+    }, 
+    {
+        "website": "http://www.xcri.co.uk/examples-a-code/272-sample-xcri-cap-12-instance-file-for-the-open-university.html", 
+        "name": "Open University (Test feed)", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1057", 
+        "version": "1.2", 
+        "resource_url": "http://www.xcri.co.uk/KbLibrary/SampleOUXCRI1_2.xml", 
+        "type": "REST",
+        "problem" : "Returns a 404"
+    },
+    {
+        "website": "http://www.wychwolf.com/moodle/", 
+        "name": "Test Uni", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1055", 
+        "version": "1.1", 
+        "resource_url": "http://www.xxp.org/getxcri/X001008_11.xml", 
+        "type": "REST",
+        "problem" : "Returns an HTML frameset"
+    },
+    {
+        "website": "", 
+        "name": "University of Bolton", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1002", 
+        "version": "1.1", 
+        "resource_url": "http://www.bolton.ac.uk/xcri/xcri.asp", 
+        "type": "REST",
+        "problem" : "Returns a 500 error"
+    }, 
+    {
+        "website": "http://llnmoodle.worc.ac.uk/portalmoodle/course/view.php?id=51", 
+        "name": "University of Worcester", 
+        "url": "http://xxp.igsl.co.uk/app/xcriinfo?fed_id=1054", 
+        "version": "1.1", 
+        "resource_url": "http://llnmoodle.worc.ac.uk/portalmoodle/file.php/51/final_uwxcr.xml", 
+        "type": "REST",
+        "problem" : "Returns a 404"
+    }
 ]

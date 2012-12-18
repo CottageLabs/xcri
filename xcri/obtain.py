@@ -58,6 +58,8 @@ for endpoint in endpoints.rest_endpoints():
     print "REST Harvest: " + endpoint['resource_url'] + " to " + filename
     try:
         resp = requests.get(endpoint['resource_url'])
+        if resp.status_code >= 400:
+            raise Exception("Error status code received: " + str(resp.status_code))
         f = codecs.open(filename, encoding='utf-8', mode='wb')
         f.write(resp.text)
         f.close()
