@@ -1,0 +1,319 @@
+{
+    "catalog" : {
+        "provider" : [
+            {
+                "dc:identifier" : [
+                    {
+                        "type" : "type",
+                        "value" : "value"
+                    }
+                ],
+                "mlo:location" : {
+                    "mlo:street" : "street",
+                    "mlo:town" : "town",
+                    "mlo:postcode" : "postcode",
+                    "mlo:phone" : "phone",
+                    "mlo:fax" : "fax",
+                    "mlo:email" : "email",
+                    "mlo:url" : "url",
+                    "mlo:address" : [
+                        {"type" : "type", "value" : "value"}
+                    ]
+                }
+                "course" : [
+                    {
+                        "mlo:level" : "level",
+                        "mlo:qualification" : [
+                            {
+                                "dc:identifier" : [
+                                    {
+                                        "type" : "type",
+                                        "value" : "value"
+                                    }
+                                ],
+                                "dc:title" : [
+                                    {
+                                        "lang" : "lang",
+                                        "value" : "value"
+                                    }
+                                ],
+                                "abbr" : "abbr",
+                                "dc:description" : [
+                                    {
+                                        "lang" : "lang",
+                                        "href" : "href",
+                                        "value" : "value"
+                                    }
+                                ],
+                                "dcterms:educationLevel" : ["education level"],
+                                "dc:type" : "type",
+                                "mlo:url" : "url",
+                                "awardedBy" : "awarded by",
+                                "accreditedBy" : "accredited by"
+                            }
+                        ],
+                        "presentation" : [
+                            {
+                                "dc:contributor" : ["contributor"],
+                                "dc:description" : [
+                                    {
+                                        "lang" : "lang",
+                                        "href" : "href",
+                                        "value" : "value"
+                                    }
+                                ],
+                                "dc:identifier" : [
+                                    {
+                                        "type" : "type",
+                                        "value" : "value"
+                                    }
+                                ],
+                                "image" : {
+                                    "src" : "src",
+                                    "title" : "title",
+                                    "alt" : "alt"
+                                },
+                                "dc:subject" : [
+                                    {
+                                        "type" : "type",
+                                        "identifier" : "identifier",
+                                        "lang" : "lang",
+                                        "value" : "value"
+                                    }
+                                ],
+                                "dc:title" : [
+                                    {
+                                        "lang" : "lang",
+                                        "value" : "value"
+                                    }
+                                ],
+                                "dc:type" : "type",
+                                "mlo:url" : "url",
+                                
+                                "abstract" : [
+                                    {
+                                        "lang" : "lang",
+                                        "href" : "href",
+                                        "value" : "value"
+                                    }
+                                ],
+                                "applicationProcedure" : [
+                                    {
+                                        "lang" : "lang",
+                                        "href" : "href",
+                                        "value" : "value"
+                                    }
+                                ],
+                                "assessment" : [
+                                    {
+                                        "lang" : "lang",
+                                        "href" : "href",
+                                        "value" : "value"
+                                    }
+                                ],
+                                "learningOutcome" : [
+                                    {
+                                        "lang" : "lang",
+                                        "href" : "href",
+                                        "value" : "value"
+                                    }
+                                ],
+                                "objective" : [
+                                    {
+                                        "lang" : "lang",
+                                        "href" : "href",
+                                        "value" : "value"
+                                    }
+                                ],
+                                "prerequisite" : [
+                                    {
+                                        "lang" : "lang",
+                                        "href" : "href",
+                                        "value" : "value"
+                                    }
+                                ],
+                                "regulations" : [
+                                    {
+                                        "lang" : "lang",
+                                        "href" : "href",
+                                        "value" : "value"
+                                    }
+                                ]
+                                
+                                "start" : {"dtf" : "datetime", "value" : "value"},
+                                "end" : {"dtf" : "datetime", "value" : "value"},
+                                "duration" : {"interval" : "interval", "value" : "value"},,
+                                "applyFrom" : {"dtf" : "datetime", "value" : "value"},,
+                                "applyUntil" : {"dtf" : "datetime", "value" : "value"},,
+                                "applyTo" : "apply to",
+                                "engagement" : [{}],
+                                "studymode" : {"identifier" : "identifier", "value" : "value"},
+                                "attendancemode" : {"identifier" : "identifier", "value" : "value"},
+                                "attendancepattern" : {"identifier" : "identifier", "value" : "value"},
+                                "languageOfInstruction" : ["lang"],
+                                "languageOfAssessment" : ["lang"],
+                                "places" : "places",
+                                "cost" : "cost",
+                                "age" : "age",
+                                "venue" : [
+                                    { 
+                                        "provider" : {
+                                            "dc:identifier" : [
+                                                {
+                                                    "type" : "type",
+                                                    "value" : "value"
+                                                }
+                                            ],
+                                            "mlo:location" : {
+                                                "mlo:street" : "street",
+                                                "mlo:town" : "town",
+                                                "mlo:postcode" : "postcode",
+                                                "mlo:phone" : "phone",
+                                                "mlo:fax" : "fax",
+                                                "mlo:email" : "email",
+                                                "mlo:url" : "url",
+                                                "mlo:address" : [
+                                                    {"type" : "type", "value" : "value"}
+                                                ]
+                                            } 
+                                        }
+                                    }
+                                ]
+                            }
+                        ],
+                        "mlo:credit" : [
+                            {
+                                "credit:scheme" : "scheme",
+                                "credit:level" : "level",
+                                "credit:value" : "value"
+                            }
+                        ],
+                        "dc:contributor" : ["contributor"],
+                        "dc:description" : [
+                            {
+                                "lang" : "lang",
+                                "href" : "href",
+                                "value" : "value"
+                            }
+                        ],
+                        "dc:identifier" : [
+                            {
+                                "type" : "type",
+                                "value" : "value"
+                            }
+                        ],
+                        "image" : {
+                            "src" : "src",
+                            "title" : "title",
+                            "alt" : "alt"
+                        },
+                        "dc:subject" : [
+                            {
+                                "type" : "type",
+                                "identifier" : "identifier",
+                                "lang" : "lang",
+                                "value" : "value"
+                            }
+                        ],
+                        "dc:title" : [
+                            {
+                                "lang" : "lang",
+                                "value" : "value"
+                            }
+                        ],
+                        "dc:type" : "type",
+                        "mlo:url" : "url"
+                    }
+                ]
+            }
+        ]
+    }
+}
+
+# common elements:
+"dc:contributor" : ["contributor"],
+"dc:description" : [
+    {
+        "lang" : "lang",
+        "href" : "href",
+        "value" : "value"
+    }
+],
+"dc:identifier" : [
+    {
+        "type" : "type",
+        "value" : "value"
+    }
+],
+"image" : {
+    "src" : "src",
+    "title" : "title",
+    "alt" : "alt"
+},
+"dc:subject" : [
+    {
+        "type" : "type",
+        "identifier" : "identifier",
+        "lang" : "lang",
+        "value" : "value"
+    }
+],
+"dc:title" : [
+    {
+        "lang" : "lang",
+        "value" : "value"
+    }
+],
+"dc:type" : "type",
+"mlo:url" : "url"
+
+# descriptive elements:
+"abstract" : [
+    {
+        "lang" : "lang",
+        "href" : "href",
+        "value" : "value"
+    }
+],
+"applicationProcedure" : [
+    {
+        "lang" : "lang",
+        "href" : "href",
+        "value" : "value"
+    }
+],
+"assessment" : [
+    {
+        "lang" : "lang",
+        "href" : "href",
+        "value" : "value"
+    }
+],
+"learningOutcome" : [
+    {
+        "lang" : "lang",
+        "href" : "href",
+        "value" : "value"
+    }
+],
+"objective" : [
+    {
+        "lang" : "lang",
+        "href" : "href",
+        "value" : "value"
+    }
+],
+"prerequisite" : [
+    {
+        "lang" : "lang",
+        "href" : "href",
+        "value" : "value"
+    }
+],
+"regulations" : [
+    {
+        "lang" : "lang",
+        "href" : "href",
+        "value" : "value"
+    }
+]
