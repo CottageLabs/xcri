@@ -61,6 +61,7 @@ for jf in json_files:
         courses = rec['catalog']['provider']['course']
         for course in courses:
             courseid = uuid.uuid4().hex
+            course['provider'] = record
             course['sourcefeed'] = feedid
             course['sourcepath'] = path
             course['_id'] = courseid
