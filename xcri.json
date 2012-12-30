@@ -2,12 +2,41 @@
     "catalog" : {
         "provider" : [
             {
+                "dc:contributor" : ["contributor"],
+                "dc:description" : [
+                    {
+                        "lang" : "lang",
+                        "href" : "href",
+                        "value" : "value"
+                    }
+                ],
                 "dc:identifier" : [
                     {
                         "type" : "type",
                         "value" : "value"
                     }
                 ],
+                "image" : {
+                    "src" : "src",
+                    "title" : "title",
+                    "alt" : "alt"
+                },
+                "dc:subject" : [
+                    {
+                        "type" : "type",
+                        "identifier" : "identifier",
+                        "lang" : "lang",
+                        "value" : "value"
+                    }
+                ],
+                "dc:title" : [
+                    {
+                        "lang" : "lang",
+                        "value" : "value"
+                    }
+                ],
+                "dc:type" : "type",
+                "mlo:url" : "url",
                 "mlo:location" : {
                     "mlo:street" : "street",
                     "mlo:town" : "town",
@@ -104,7 +133,7 @@
                                         "value" : "value"
                                     }
                                 ],
-                                "assessment" : [
+                                "mlo:assessment" : [
                                     {
                                         "lang" : "lang",
                                         "href" : "href",
@@ -118,14 +147,14 @@
                                         "value" : "value"
                                     }
                                 ],
-                                "objective" : [
+                                "mlo:objective" : [
                                     {
                                         "lang" : "lang",
                                         "href" : "href",
                                         "value" : "value"
                                     }
                                 ],
-                                "prerequisite" : [
+                                "mlo:prerequisite" : [
                                     {
                                         "lang" : "lang",
                                         "href" : "href",
