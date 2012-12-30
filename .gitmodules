@@ -1,0 +1,3 @@
+[submodule "facetview"]
+	path = facetview
+	url = git://github.com/okfn/facetview.git

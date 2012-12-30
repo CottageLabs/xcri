@@ -1,1 +1,12 @@
-xcri/data/*.xml
+xcri/data/*
+xcri/*.pyc
+xcri/errors
+*.pyc
+*.egg-info/*
+.*.swp
+src*
+.DS_Store
+.Python
+bin/*
+build/*
+dist/*
