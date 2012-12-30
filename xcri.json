@@ -169,20 +169,20 @@
                                     }
                                 ]
                                 
-                                "start" : {"dtf" : "datetime", "value" : "value"},
-                                "end" : {"dtf" : "datetime", "value" : "value"},
-                                "duration" : {"interval" : "interval", "value" : "value"},,
-                                "applyFrom" : {"dtf" : "datetime", "value" : "value"},,
-                                "applyUntil" : {"dtf" : "datetime", "value" : "value"},,
+                                "mlo:start" : {"dtf" : "datetime", "value" : "value"},
+                                "mlo:end" : {"dtf" : "datetime", "value" : "value"},
+                                "mlo:duration" : {"interval" : "interval", "value" : "value"},
+                                "applyFrom" : {"dtf" : "datetime", "value" : "value"},
+                                "applyUntil" : {"dtf" : "datetime", "value" : "value"},
                                 "applyTo" : "apply to",
-                                "engagement" : [{}],
+                                "mlo:engagement" : [{}],
                                 "studymode" : {"identifier" : "identifier", "value" : "value"},
                                 "attendancemode" : {"identifier" : "identifier", "value" : "value"},
                                 "attendancepattern" : {"identifier" : "identifier", "value" : "value"},
-                                "languageOfInstruction" : ["lang"],
+                                "mlo:languageOfInstruction" : ["lang"],
                                 "languageOfAssessment" : ["lang"],
-                                "places" : "places",
-                                "cost" : "cost",
+                                "mlo:places" : "places",
+                                "mlo:cost" : "cost",
                                 "age" : "age",
                                 "venue" : [
                                     { 
@@ -251,7 +251,56 @@
                             }
                         ],
                         "dc:type" : "type",
-                        "mlo:url" : "url"
+                        "mlo:url" : "url",
+                        "abstract" : [
+                            {
+                                "lang" : "lang",
+                                "href" : "href",
+                                "value" : "value"
+                            }
+                        ],
+                        "applicationProcedure" : [
+                            {
+                                "lang" : "lang",
+                                "href" : "href",
+                                "value" : "value"
+                            }
+                        ],
+                        "mlo:assessment" : [
+                            {
+                                "lang" : "lang",
+                                "href" : "href",
+                                "value" : "value"
+                            }
+                        ],
+                        "learningOutcome" : [
+                            {
+                                "lang" : "lang",
+                                "href" : "href",
+                                "value" : "value"
+                            }
+                        ],
+                        "mlo:objective" : [
+                            {
+                                "lang" : "lang",
+                                "href" : "href",
+                                "value" : "value"
+                            }
+                        ],
+                        "mlo:prerequisite" : [
+                            {
+                                "lang" : "lang",
+                                "href" : "href",
+                                "value" : "value"
+                            }
+                        ],
+                        "regulations" : [
+                            {
+                                "lang" : "lang",
+                                "href" : "href",
+                                "value" : "value"
+                            }
+                        ]
                     }
                 ]
             }
@@ -311,7 +360,7 @@
         "value" : "value"
     }
 ],
-"assessment" : [
+"mlo:assessment" : [
     {
         "lang" : "lang",
         "href" : "href",
@@ -325,14 +374,14 @@
         "value" : "value"
     }
 ],
-"objective" : [
+"mlo:objective" : [
     {
         "lang" : "lang",
         "href" : "href",
         "value" : "value"
     }
 ],
-"prerequisite" : [
+"mlo:prerequisite" : [
     {
         "lang" : "lang",
         "href" : "href",
