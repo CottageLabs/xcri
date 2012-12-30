@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Cottage Labs XCRI Demonstrator</title>
+    <meta name="description" content="Cottage Labs XCRI Demonstrator">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript" src="facetview/vendor/jquery/1.7.1/jquery-1.7.1.min.js"></script>
+    <link rel="stylesheet" href="facetview/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="facetview/vendor/bootstrap/css/bootstrap-responsive.min.css">
+    <script type="text/javascript" src="facetview/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="facetview/vendor/linkify/1.0/jquery.linkify-1.0-min.js"></script>  
+    <link rel="stylesheet" href="facetview/vendor/jquery-ui-1.8.18.custom/jquery-ui-1.8.18.custom.css">
+    <script type="text/javascript" src="facetview/vendor/jquery-ui-1.8.18.custom/jquery-ui-1.8.18.custom.min.js"></script>
+    <script type="text/javascript" src="facetview/jquery.facetview.js"></script>
+    <link rel="stylesheet" href="facetview/css/facetview.css">
+
+    <script type="text/javascript">
+    jQuery(document).ready(function() {
+        $('#fv').facetview({
+            search_url: 'http://test.cottagelabs.com:9200/xcri/feed/_search?',
+            search_index: 'elasticsearch',
+            datatype: 'json',
+            facets: [
+                {'field': 'sourcepath.exact', 'display': 'source', 'size': 100}
+            ],
+            paging: {
+                size: 20
+            },
+            pager_on_top: true,
+            result_display: [
+                [
+                    {
+                        "pre": '<a href="http://test.cottagelabs.com:9200/xcri/feed/',
+                        "field": "_id",
+                        "post": '">'
+                    },
+                    {
+                        "pre": "TITLE (if present): ",
+                        "field": "title",
+                        "post": '</a>'
+                    }
+                ]
+            ]
+        });
+    });
+    </script>
+
+    <style type="text/css">
+    html, body{
+        margin-top:40px;
+    }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="brand" href="/xcri">XCRI</a>
+                <ul class="nav">
+                    <li><a href="/xcri/feeds.html">feeds</a></li>
+                    <li><a href="/xcri/courses.html">courses</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container main">
+
+        <div id="fv" class="content">
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="row-fluid">
+                <div class="span12">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
