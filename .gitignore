@@ -1,4 +1,3 @@
-xcri/data/*
 xcri/*.pyc
 xcri/errors
 *.pyc

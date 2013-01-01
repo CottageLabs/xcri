@@ -4,14 +4,19 @@ from lxml import etree
 DC_NS = "http://purl.org/dc/elements/1.1/"
 MLO_NS = "http://purl.org/net/mlo"
 
-11_NS = "http://xcri.org/profiles/catalog"
-12_NS = "http://xcri.org/profiles/1.2/catalog"
+NS_11 = "http://xcri.org/profiles/catalog"
+NS_11 = "http://xcri.org/profiles/1.2/catalog"
 
 def xcrixml2json(path):
     # read in the XML
     with open(path) as source:
         doc = etree.parse(source)
     root = doc.getroot()
+    
+    # figure out if we need to upgrade from 1.1 to 1.2
+    #namespace = root.nsmap[None]
+    #if namespace == 11_NS:
+    #    upgrade_11_12(root)
     
     # reform the XML to separate embedded XHTML from the XCRI
     _add_cdata(root)
@@ -20,12 +25,7 @@ def xcrixml2json(path):
     xml = etree.tostring(root)
     d = xmltodict.parse(xml)
     catalog = d['catalog']
-    
-    # figure out if we need to upgrade from 1.1 to 1.2
-    namespace = root.nsmap[None]
-    if namespace == 11_NS:
-        upgrade_catalog(catalog)
-        
+      
     cleanup_catalog(catalog)
     j = json.dumps(d, indent=2)
     return j
