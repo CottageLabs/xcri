@@ -1,15 +1,86 @@
-import json, argparse, os, xmltodict, collections
+import json, argparse, os, xmltodict, collections, re
 from lxml import etree
 
+DC_NS = "http://purl.org/dc/elements/1.1/"
+MLO_NS = "http://purl.org/net/mlo"
+
+NS_11 = "http://xcri.org/profiles/catalog"
+NS_11 = "http://xcri.org/profiles/1.2/catalog"
+
 def xcrixml2json(path):
+    # read in the XML
     with open(path) as source:
-        xml = source.read()
+        doc = etree.parse(source)
+    root = doc.getroot()
+    
+    # figure out if we need to upgrade from 1.1 to 1.2
+    #namespace = root.nsmap[None]
+    #if namespace == 11_NS:
+    #    upgrade_11_12(root)
+    
+    # reform the XML to separate embedded XHTML from the XCRI
+    _add_cdata(root)
+    
+    # convert the xml first to a string and then to a python data structure
+    xml = etree.tostring(root)
     d = xmltodict.parse(xml)
     catalog = d['catalog']
+      
     cleanup_catalog(catalog)
     j = json.dumps(d, indent=2)
     return j
     #return d
+
+def _add_cdata(root):
+    namespace = root.nsmap[None]
+    
+    # all dc:description elements
+    desc_xp = "//{" + DC_NS + "}description"
+    _do_add_cdata(root, desc_xp)
+    
+    # abstract
+    abstract_xp = "//{" + namespace + "}abstract"
+    _do_add_cdata(root, abstract_xp)
+    
+    # applicationProcedure
+    ap_xp = "//{" + namespace + "}applicationProcedure"
+    _do_add_cdata(root, ap_xp)
+    
+    # mlo:assessment
+    ass_xp = "//{" + MLO_NS + "}assessment"
+    _do_add_cdata(root, ass_xp)
+    
+    # learningOutcome
+    lo_xp = "//{" + namespace + "}learningOutcome"
+    _do_add_cdata(root, lo_xp)
+    
+    # mlo:objective
+    obj_xp = "//{" + MLO_NS + "}objective"
+    _do_add_cdata(root, obj_xp)
+    
+    # mlo:prerequisite
+    pre_xp = "//{" + MLO_NS + "}prerequisite"
+    _do_add_cdata(root, pre_xp)
+    
+    # regulations
+    reg_xp = "//{" + namespace + "}regulations"
+    _do_add_cdata(root, reg_xp)
+    
+def _do_add_cdata(root, xpath):
+    rx = "<.+?>(.+)</"
+    desc_xp = etree.ETXPath(xpath)
+    descs = desc_xp(root)
+    for desc in descs:
+        if len(desc.getchildren()) > 0:
+            s = etree.tostring(desc)
+            m = re.match(rx, s)
+            cdata = None
+            if m is not None:
+                cdata = "<![CDATA[" + m.group(1) + "]]>"
+            if cdata is not None:
+                desc.text = cdata
+                for i in range(len(desc.getchildren())):
+                    del desc[i]
 
 def _is_dict(element):
     return type(element) == collections.OrderedDict or type(element) == dict
@@ -50,6 +121,11 @@ def _extract_text(element):
         return element.get("#text", "")
     else:
         return element
+
+def _remove_dud_text(element):
+    if _is_dict(element):
+        if element.has_key("#text"):
+            del element["#text"]
 
 def _prepend_namespace(parent, element_name, namespace, default=None):
     # look for reasons not to do this (the namespace prefix is already
@@ -112,6 +188,7 @@ def _descriptive_text_element(parent, element, idx):
         _dte_format(e)
     else:
         _text_to_value(parent, element, idx)
+        _strip_cdata(parent[element][idx], "value")
 
 def _temporal_element(parent, element):
     if not parent.has_key(element):
@@ -131,6 +208,18 @@ def _dte_format(element):
     _rename_key(element, "@href", "href")
     _rename_key(element, "#text", "value")
     _remove_attributes(element)
+    _strip_cdata(element, "value")
+
+def _strip_cdata(element, key):
+    v = element.get(key, "")
+    if v is None:
+        return
+    if v.startswith("<![CDATA["):
+        v = v[9:]
+    if v.endswith("]]>"):
+        v = v[:-3]
+    element[key] = v
+    
 
 def _rename_key(parent, original, new_key, format=None):
     if not parent.has_key(original):
@@ -143,12 +232,45 @@ def _rename_key(parent, original, new_key, format=None):
         parent[new_key] = parent[original]
     del parent[original]
 
+def _migrate_down(parent, target, to_move, format=None):
+    if not parent.has_key(target):
+        parent[target] = {}
+    if parent.has_key(to_move):
+        parent[target][to_move] = format
+        if type(parent[to_move]) == list and type(format) == list:
+            for a in parent[to_move]:
+                parent[target][to_move].append(a)
+        elif type(parent[to_move]) != list and type(format) == list:
+            parent[target][to_move].append(parent[to_move])
+        else:
+            parent[target][to_move] = parent[to_move]
+        del parent[to_move]
+
+def upgrade_catalog(catalog):
+    _ensure_list(catalog, "provider")
+    for prov in catalog.get('provider', []):
+        upgrade_provider(prov)
+
+def upgrade_provider(prov):
+    _migrate_down(prov, "mlo:location", "address", [])
+    _migrate_down(prov, "mlo:location", "street")
+    _migrate_down(prov, "mlo:location", "town")
+    _migrate_down(prov, "mlo:location", "postcode")
+    _migrate_down(prov, "mlo:location", "phone")
+    _migrate_down(prov, "mlo:location", "fax")
+    _migrate_down(prov, "mlo:location", "email")
+    
+    _ensure_list(provider, "course")
+    for course in provider.get('course', []):
+        cleanup_course(course)
+
 def cleanup_catalog(catalog):
     """
     "catalog" : {
         "provider" : [ ]
     }
     """
+    _remove_dud_text(catalog)
     _remove_attributes(catalog)
     _ensure_list(catalog, "provider")
     for prov in catalog.get('provider', []):
@@ -178,6 +300,8 @@ def cleanup_provider(provider):
         "course" : [ ]
     }
     """
+    _remove_dud_text(provider)
+    
     _prepend_namespace(provider, "contributor", "dc", [])
     _ensure_list(provider, "dc:contributor")
     for i in range(len(provider.get("dc:contributor", []))):
@@ -186,7 +310,7 @@ def cleanup_provider(provider):
     _prepend_namespace(provider, "description", "dc", [])
     _ensure_list(provider, "dc:description")
     for i in range(len(provider.get('dc:description', []))):
-        _descriptive_text_element(provider, "dc.description", i)
+        _descriptive_text_element(provider, "dc:description", i)
     
     _prepend_namespace(provider, "identifier", "dc", [])
     _ensure_list(provider, "dc:identifier")
@@ -244,6 +368,8 @@ def cleanup_course(course):
         "regulations" : [{"lang" : "lang", "href" : "href", "value" : "value"}]
     }
     """
+    _remove_dud_text(course)
+    
     _prepend_namespace(course, "level", "mlo")
     _ensure_text(course, "mlo:level")
     
@@ -340,6 +466,7 @@ def cleanup_location(parent, location):
     }
     """
     loc = parent[location]
+    _remove_dud_text(loc)
     
     _prepend_namespace(loc, "street", "mlo")
     _ensure_text(loc, "mlo:street")
@@ -404,6 +531,7 @@ def cleanup_image(image):
     """
     {"src" : "src","title" : "title","alt" : "alt" }
     """
+    _remove_dud_text(image)
     _rename_key(image, "@src", "src")
     _rename_key(image, "@title", "title")
     _rename_key(image, "@alt", "alt")
@@ -413,9 +541,13 @@ def cleanup_credit(credit):
     """
     {"credit:scheme" : "scheme", "credit:level" : "level", "credit:value" : "value"}
     """
+    _remove_dud_text(credit)
     _prepend_namespace(credit, "scheme", "credit")
+    _ensure_text(credit, "credit:scheme")
     _prepend_namespace(credit, "level", "credit")
+    _ensure_text(credit, "credit:level")
     _prepend_namespace(credit, "value", "credit")
+    _ensure_text(credit, "credit:value")
     _remove_attributes(credit)
 
 def cleanup_presentation(pres):
@@ -442,9 +574,9 @@ def cleanup_presentation(pres):
         "applyUntil" : {"dtf" : "datetime", "value" : "value"},
         "applyTo" : "apply to",
         "mlo:engagement" : [{}],
-        "studymode" : {"identifier" : "identifier", "value" : "value"},
-        "attendancemode" : {"identifier" : "identifier", "value" : "value"},
-        "attendancepattern" : {"identifier" : "identifier", "value" : "value"},
+        "studyMode" : {"identifier" : "identifier", "value" : "value"},
+        "attendanceMode" : {"identifier" : "identifier", "value" : "value"},
+        "attendancePattern" : {"identifier" : "identifier", "value" : "value"},
         "mlo:languageOfInstruction" : ["lang"],
         "languageOfAssessment" : ["lang"],
         "mlo:places" : "places",
@@ -453,6 +585,8 @@ def cleanup_presentation(pres):
         "venue" : [ ]
     }
     """
+    _remove_dud_text(pres)
+    
     _prepend_namespace(pres, "description", "dc", [])
     _ensure_list(pres, "dc:description")
     for i in range(len(pres.get('dc:description', []))):
@@ -532,14 +666,14 @@ def cleanup_presentation(pres):
     # not enough information about mlo:engagement to do any serious cleanup on it
     _prepend_namespace(pres, "engagement", "mlo", [])
     
-    if pres.has_key("studymode"):
-        cleanup_mode(pres, "studymode")
+    if pres.has_key("studyMode"):
+        cleanup_mode(pres, "studyMode")
     
-    if pres.has_key("attendancemode"):
-        cleanup_mode(pres, "attendancemode")
+    if pres.has_key("attendanceMode"):
+        cleanup_mode(pres, "attendanceMode")
     
-    if pres.has_key("attendancepattern"):
-        cleanup_mode(pres, "attendancepattern")
+    if pres.has_key("attendancePattern"):
+        cleanup_mode(pres, "attendancePattern")
         
     _prepend_namespace(pres, "languageOfInstruction", "mlo", [])
     _ensure_list(pres, "mlo:languageOfInstruction")
@@ -565,6 +699,7 @@ def cleanup_presentation(pres):
 
 def cleanup_venue(parent, venue, idx):
     element = parent[venue][idx]
+    _remove_dud_text(element)
     if not _is_dict(element):
         # not spec conformant, so delete
         del parent[venue][idx]
@@ -573,6 +708,9 @@ def cleanup_venue(parent, venue, idx):
         cleanup_provider(element["provider"])
 
 def cleanup_mode(parent, mode):
+    """
+    {"identifier" : "identifier", "value" : "value"}
+    """
     _text_to_value(parent, mode)
     _rename_key(parent[mode], "@identifier", "identifier")
     _remove_attributes(parent[mode])
@@ -591,6 +729,8 @@ def cleanup_qualification(qual):
         "accreditedBy" : "accredited by"
     }
     """
+    _remove_dud_text(qual)
+    
     _prepend_namespace(qual, "identifier", "dc", [])
     _ensure_list(qual, "dc:identifier")
     for i in range(len(qual.get('dc:identifier', []))):
