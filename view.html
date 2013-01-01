@@ -23,45 +23,19 @@
     <link rel="stylesheet" href="facetview/css/facetview.css">
 
     <script type="text/javascript">
+    function getURLParameter(name) {
+        return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null;
+    };
     jQuery(document).ready(function() {
-        var postsearch = function(event) {
-            $('.feature_title:odd').css("color","#666");
-            $('.row-fluid .feature_span:nth-child(4n+1)').css("margin-left",0);
-            $('#fv_found').html($.fn.facetview.options["rawdata"]["hits"]["total"]);
+        var showrecord = function(data) {
+            var rec = $.parseJSON(data);
+            $('#fv').append(JSON.stringify(rec["_source"],"","<br>"));
         };
-
-        $('#fv').facetview({
-            post_search_callback: postsearch,
-            search_url: 'http://test.cottagelabs.com:9200/xcri/course/_search?',
-            search_index: 'elasticsearch',
-            datatype: 'json',
-            facets: [
-                {'field': 'provider.dc:title.value.exact', 'display': 'institute', 'size': 100}
-            ],
-            paging: {
-                size: 12
-            },
-            result_display: [
-                [
-                    {
-                        "pre": '<div class="feature_box"><a class="feature_title" href="http://test.cottagelabs.com/xcri/view.html?id=',
-                        "field": "_id",
-                        "post": '">'
-                    },
-                    {
-                        "field": "dc:title.value",
-                        "post": "</a></div>"
-                    }
-                ]
-            ],
-            searchwrap_start: '<div class="row-fluid"><div style="margin-top:20px;margin-bottom:0px;"><div id="facetview_results" class="clearfix">',
-            searchwrap_end: '</div></div></div>',
-            resultwrap_start: '<div class="span3 feature_span">',
-            resultwrap_end: '</div>',
-            embedded_search: false,
-            searchbox_class: "#fv_searchbox",
-            display_images: false,
-            pager_slider: true
+        var record = getURLParameter("id");
+        $.ajax({
+            type: "get",
+            url: "http://test.cottagelabs.com:9200/xcri/course/" + record,
+            success: showrecord
         });
     });
     </script>
@@ -111,7 +85,7 @@
     .feature_content{
         text-align:justify;
     }
-    #fv_searchbox{
+    .fv_searchbox{
         width:400px;
         height:30px;
         font-size:30px;
@@ -180,7 +154,7 @@
                             <li><a href="/xcri/about.html">about</a></li>
                         </ul>
                         <div style="clear:both;">
-                            <input type="text" id="fv_searchbox" placeholder="find courses">
+                            <input type="text" class="fv_searchbox" placeholder="find courses">
                             <a href="#" style="padding-left:10px;"><i class="icon-chevron-down"></i></a>
                             <div id="fv_found"></div>
                         </div>

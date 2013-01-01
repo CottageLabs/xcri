@@ -23,7 +23,7 @@
     <script type="text/javascript">
     jQuery(document).ready(function() {
         $('#fv').facetview({
-            search_url: 'http://test.cottagelabs.com:9200/xcri/feed/_search?',
+            search_url: 'http://test.cottagelabs.com:9200/xcri/provider/_search?',
             search_index: 'elasticsearch',
             datatype: 'json',
             facets: [
@@ -36,7 +36,7 @@
             result_display: [
                 [
                     {
-                        "pre": '<a href="http://test.cottagelabs.com:9200/xcri/feed/',
+                        "pre": '<a href="http://test.cottagelabs.com:9200/xcri/provider/',
                         "field": "_id",
                         "post": '">'
                     },
@@ -66,7 +66,7 @@
             <div class="container">
                 <a class="brand" href="/xcri">XCRI</a>
                 <ul class="nav">
-                    <li><a href="/xcri/feeds.html">feeds</a></li>
+                    <li><a href="/xcri/providers.html">providers</a></li>
                     <li><a href="/xcri/courses.html">courses</a></li>
                 </ul>
             </div>
