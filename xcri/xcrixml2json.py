@@ -4,15 +4,28 @@ from lxml import etree
 DC_NS = "http://purl.org/dc/elements/1.1/"
 MLO_NS = "http://purl.org/net/mlo"
 
+11_NS = "http://xcri.org/profiles/catalog"
+12_NS = "http://xcri.org/profiles/1.2/catalog"
+
 def xcrixml2json(path):
+    # read in the XML
     with open(path) as source:
         doc = etree.parse(source)
     root = doc.getroot()
+    
+    # reform the XML to separate embedded XHTML from the XCRI
     _add_cdata(root)
     
+    # convert the xml first to a string and then to a python data structure
     xml = etree.tostring(root)
     d = xmltodict.parse(xml)
     catalog = d['catalog']
+    
+    # figure out if we need to upgrade from 1.1 to 1.2
+    namespace = root.nsmap[None]
+    if namespace == 11_NS:
+        upgrade_catalog(catalog)
+        
     cleanup_catalog(catalog)
     j = json.dumps(d, indent=2)
     return j
@@ -219,6 +232,38 @@ def _rename_key(parent, original, new_key, format=None):
         parent[new_key] = parent[original]
     del parent[original]
 
+def _migrate_down(parent, target, to_move, format=None):
+    if not parent.has_key(target):
+        parent[target] = {}
+    if parent.has_key(to_move):
+        parent[target][to_move] = format
+        if type(parent[to_move]) == list and type(format) == list:
+            for a in parent[to_move]:
+                parent[target][to_move].append(a)
+        elif type(parent[to_move]) != list and type(format) == list:
+            parent[target][to_move].append(parent[to_move])
+        else:
+            parent[target][to_move] = parent[to_move]
+        del parent[to_move]
+
+def upgrade_catalog(catalog):
+    _ensure_list(catalog, "provider")
+    for prov in catalog.get('provider', []):
+        upgrade_provider(prov)
+
+def upgrade_provider(prov):
+    _migrate_down(prov, "mlo:location", "address", [])
+    _migrate_down(prov, "mlo:location", "street")
+    _migrate_down(prov, "mlo:location", "town")
+    _migrate_down(prov, "mlo:location", "postcode")
+    _migrate_down(prov, "mlo:location", "phone")
+    _migrate_down(prov, "mlo:location", "fax")
+    _migrate_down(prov, "mlo:location", "email")
+    
+    _ensure_list(provider, "course")
+    for course in provider.get('course', []):
+        cleanup_course(course)
+
 def cleanup_catalog(catalog):
     """
     "catalog" : {
@@ -265,7 +310,7 @@ def cleanup_provider(provider):
     _prepend_namespace(provider, "description", "dc", [])
     _ensure_list(provider, "dc:description")
     for i in range(len(provider.get('dc:description', []))):
-        _descriptive_text_element(provider, "dc.description", i)
+        _descriptive_text_element(provider, "dc:description", i)
     
     _prepend_namespace(provider, "identifier", "dc", [])
     _ensure_list(provider, "dc:identifier")
