@@ -1,4 +1,5 @@
 import json, argparse, os, requests, uuid
+from copy import deepcopy
 
 parser = argparse.ArgumentParser(description='Parse XCRI JSON files into an ES index, Your ES index has to be running for this to succeed')
 parser.add_argument('-d', help='Source directory of XCRI JSON files', required=True)
@@ -10,7 +11,7 @@ ES_URL = 'http://localhost:9200/xcri'
 IN_DIR = args.d
 
 mapping = {
-    "feed" : {
+    "provider" : {
         "date_detection" : "false",
         "dynamic_templates" : [
             {
@@ -32,17 +33,17 @@ mapping = {
 
 d = requests.delete(ES_URL)
 p = requests.post(ES_URL)
-pt = requests.put(ES_URL + '/feed/_mapping', json.dumps(mapping))
+pt = requests.put(ES_URL + '/provider/_mapping', json.dumps(mapping))
 
-mapping["course"] = mapping["feed"]
-del mapping["feed"]
+mapping["course"] = mapping["provider"]
+del mapping["provider"]
 pta = requests.put(ES_URL + '/course/_mapping', json.dumps(mapping))
 
 json_files = [f for f in os.listdir(IN_DIR) if (f.endswith(".json") and f not in ['broken-sources.json','directory-scrape.json','sources.json'])]
 
 errors = open('errors','w')
 
-feedcount = 0
+providercount = 0
 coursecount = 0
 
 for jf in json_files:
@@ -54,31 +55,30 @@ for jf in json_files:
     rec = json.loads(js)
 
     try:
-        feedid = uuid.uuid4().hex
-        record = rec['catalog']['provider']
-        record['_id'] = feedid
+        for record in rec['catalog']['provider']:
+            record['_id'] = uuid.uuid4().hex
+            record['sourcepath'] = path
 
-        courses = rec['catalog']['provider']['course']
-        for course in courses:
-            courseid = uuid.uuid4().hex
-            course['provider'] = record
-            course['sourcefeed'] = feedid
-            course['sourcepath'] = path
-            course['_id'] = courseid
-            r = requests.post(ES_URL + '/course/' + courseid, json.dumps(course))
+            meta = deepcopy(record)
+            del meta['course']
 
-            coursecount += 1
-            print str(feedcount) + ' - ' + str(coursecount)
+            for course in record['course']:
+                course['provider'] = meta
+                course['_id'] = uuid.uuid4().hex
+                r = requests.post(ES_URL + '/course/' + course['_id'], json.dumps(course))
 
-        del record['course']
-        r = requests.post(ES_URL + '/feed/' + feedid, json.dumps(record))
+                coursecount += 1
+                print str(providercount) + ' - ' + str(coursecount)
 
-        feedcount += 1
-        print feedcount
+            del record['course']
+            r = requests.post(ES_URL + '/provider/' + record['_id'], json.dumps(record))
+
+            providercount += 1
+            print providercount
 
     except:
         errors.write('no provider or other error in JSON for ' + path + '\n')
-        print "hmm, there is not a provider in this xml doc."
+        print "hmm, something went wrong. maybe there is not a provider in this xml doc."
 
 errors.close()
 
