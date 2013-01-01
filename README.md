@@ -97,3 +97,33 @@ So the above two examples would produce the following files:
     University of Worcester.xml
 
 Each of these files will contain raw XCRI XML data.
+
+
+Upgrading XCRI data to version 1.2
+----------------------------------
+
+Prior to attempting to convert the data to JSON for indexing, it is necessary to upgrade all XCRI 1.1 feeds to XCRI 1.2.  This can be done easily by running the upgrade.py script:
+
+    python upgrade.py -d <original xml files directory> -o <1.2 xml files output directory>
+    
+This will read all XML files from the **original xml files directory** and - if necessary - apply an XSLT transformation to bring it up to XCRI 1.2.  It will then write the file (whether it has been upgraded or not) to the **1.2 xml files output directory**, which are then suitable for conversion to JSON.
+
+When copied, the filename will remain the same, so if the -o option is omitted, the original version of the file will be overwritten.
+
+
+Converting XCRI XML to XCRI JSON
+--------------------------------
+
+For the purposes of indexing the data, it can be convenient to have the data format in JSON rather than XML.  We have devised a basic JSON schema for XCRI which can be seen in the **xcri.json** file next to this README.
+
+To convert from XML to JSON use the xcrixml2json.py script:
+
+    python xcrixml2json.py -d <1.2 xml files output directory> -o <json output directory>
+
+This will read all XML files from the **1.2 xml files output directory** and convert them to XCRI JSON suitable for indexing, placed in the **json output directory**.  Filenames are as they are in XML, but the .xml extension is replaced with .json.
+
+*Note, this software uses a generic mapping tool from XML to JSON called **xmltojson**, which is included in this source code.  Please see **xmltojson.LICENSE** for licensing conditions.*
+
+*Note, this software uses an XSLT transform taken from the XCRI Knowledge Base, which is included in this source code.  Please see **xcri-cap_xslt.README** for more details*
+
+

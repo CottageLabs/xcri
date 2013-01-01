@@ -1,0 +1,10 @@
+XCRI CAP 1.1 to 1.2 XSLT
+========================
+
+Bundled with this software is a copy of an XSLT file which can effect a transformation from an XCRI 1.1 XML document to an XCRI 1.2 one.
+
+This was obtained from: http://www.xcri.co.uk/KbLibrary/MappingMapToxcri_cap_1_2.xslt
+
+A page describing the mapping is here: http://www.xcri.co.uk/examples-a-code/149-mapping-11-to-12.html
+
+There is no licensing information regarding the transformation file itself.  Please contact the owner of this project if you have any questions/concerns about its usage here.
