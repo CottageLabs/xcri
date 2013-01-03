@@ -27,7 +27,33 @@
             search_index: 'elasticsearch',
             datatype: 'json',
             facets: [
-                {'field': 'sourcepath.exact', 'display': 'source', 'size': 100}
+                {'field': 'dc:description.value.exact', 'display': 'description', 'size': 100},
+                {'field': 'dc:identifier.value.exact', 'display': 'identifier', 'size': 100},
+                {'field': 'dc:subject.value.exact', 'display': 'subject', 'size': 100},
+                {'field': 'dc:title.value.exact', 'display': 'course title', 'size': 100},
+                {'field': 'mlo:url.exact', 'display': 'mlo url', 'size': 100},
+                {'field': 'abstract.value.exact', 'display': 'abstract', 'size': 100},
+                {'field': 'learningOutcome.value.exact', 'display': 'learning outcome', 'size': 100},
+                {'field': 'mlo:objective.value.exact', 'display': 'mlo objective', 'size': 100},
+                {'field': 'mlo:prerequisite.value.exact', 'display': 'prerequisites', 'size': 100},
+                {'field': 'mlo:credit.credit:value.exact', 'display': 'credit', 'size': 100},
+
+                {'field': 'mlo:qualification.dc:identifier.value.exact', 'display': 'qual ID', 'size': 100},
+                {'field': 'mlo:qualification.dc:title.value.exact', 'display': 'qual title', 'size': 100},
+                {'field': 'mlo:qualification.dcterms:educationLevel.exact', 'display': 'qual education lvl', 'size': 100},
+                {'field': 'mlo:qualification.awardedBy.exact', 'display': 'qual awarded by', 'size': 100},
+                {'field': 'mlo:qualification.accreditedBy.exact', 'display': 'qual accredited by', 'size': 100},
+
+                {'field': 'presentation.mlo:start.value.exact', 'display': 'presentation mlo start', 'size': 100},
+                {'field': 'presentation.mlo:start.dtf.exact', 'display': 'presentation mlo start dtf', 'size': 100},
+                {'field': 'presentation.studyMode.value.exact', 'display': 'presentation study mode', 'size': 100},
+                {'field': 'presentation.attendanceMode.value.exact', 'display': 'presentation attendance mode', 'size': 100},
+                {'field': 'presentation.attendancePattern.value.exact', 'display': 'presentation attendance pattern', 'size': 100},
+                {'field': 'presentation.mlo:cost.exact', 'display': 'presentation cost', 'size': 100},
+
+                {'field': 'presentation.venue.provider.mlo:location.mlo:postcode.exact', 'display': 'presentation venue', 'size': 100},
+
+                {'field': 'provider.dc:title.value.exact', 'display': 'provider title', 'size': 100}
             ],
             paging: {
                 size: 20

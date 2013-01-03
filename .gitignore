@@ -1,5 +1,8 @@
 xcri/*.pyc
 xcri/errors
+xcri/json/*
+xcri/xmlraw/*
+xcri/xml12/*
 *.pyc
 *.egg-info/*
 .*.swp

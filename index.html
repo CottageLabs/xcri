@@ -24,11 +24,147 @@
 
     <script type="text/javascript">
     jQuery(document).ready(function() {
+
+        var searchnow = function(event) {
+            event.preventDefault();
+            alert('search now');
+        };
+        $('#searchnow').bind('click',searchnow);
+    
+        var bigbutton = function(event) {
+            event.preventDefault();
+            if ( $(this).hasClass('') ) {
+                $('.bigbutton').removeClass('');
+            } else {
+                $('.bigbutton').removeClass('');
+                $(this).addClass('');
+            }
+        };
+        $('.bigbutton').bind('click',bigbutton);
+            
+        var morechoices = function(event) {
+            event.preventDefault();
+            $('#fv_choices').toggle();
+            $('html,body').animate({
+                scrollTop: '0px'
+            }, 'fast');
+        }
+        $('#morechoices').bind('click',morechoices);
+        $('#morechoices').tooltip();
+        
+        var showrelevant = function(event) {
+            if ( !$('#relevant').length ) {
+                $('.comparator').after('<div class="relevant"><div class="container"><div id="relevant" class="row-fluid"></div></div></div>');
+            }
+
+            var searchterm = $('#fv_searchbox').val();
+
+            // search for OERs from related courses / institutes via jorum test
+            var gotoers = function(data) {
+                var rel = '<div class="span4"><h3>View some relevant OERs</h3>';
+                for ( item in data.hits.hits ) {
+                    var rec = data.hits.hits[item]['_source'];
+                    rel += '<a target="_blank" href="http://test.cottagelabs.com/jorum/resources/' + rec.id + '">' + rec.title + '</a>';
+                    rel += ' published by ' + rec.publisher + '<br><br>';
+                }
+                rel += '</div>';
+                $('#relevant').append(rel);
+            }
+            $.ajax({
+                type: "get",
+                dataType: "jsonp",
+                url: 'http://test.cottagelabs.com/jorum/api/query?q="' + searchterm + '"',
+                success: gotoers
+            });
+            
+            // look for relevant open course ware materials 
+            var gotocws = function(data) {
+                var rel = '<div class="span4"><h3>View some relevant OCWs</h3>';
+                for ( item in data.Results ) {
+                    var rec = data.Results[item];
+                    rel += '<a target="_blank" href="' + rec.CourseURL + '">' + rec.Title + '</a>';
+                    rel += ' published by ' + rec.Institution + '<br><br>';
+                }
+                rel += '</div>';
+                $('#relevant').append(rel);
+            }
+            $.ajax({
+                type: "get",
+                dataType: "jsonp",
+                url: 'http://www.ocwsearch.com/api/v1/search.json?q=' + searchterm + '&contact=http%3a%2f%2fcottagelabs.com%2fprojects%2fxcri',
+                success: gotocws
+            });
+
+            // look up fees
+            // look up funding opportunities
+            // look up news stories relevant to course / institute
+            // look up student satisfaction / research quality
+        };
+        
+        var getrecord = function(event) {
+            event.preventDefault();
+            var record = $(this).attr('href');
+            var showrecord = function(data) {
+                var rec = $.parseJSON(data);
+                var div = '<div class="span4">';
+                //div += JSON.stringify(rec["_source"],"","<br>");
+                div += '<h3>' + rec['_source']['dc:title'][0]['value'] + '</h3>';
+                                
+                try { div += '<p><a target="_blank" href="' + rec['_source']['mlo:url'] + '">' + rec['_source']['mlo:url'] + '</a></p>'; } catch(err) {};
+                try { div += rec['_source']['mlo:objective'][0]['value']; } catch(err) {};
+                try { div += rec['_source']['mlo:prerequisite'][0]['value']; } catch(err) {};
+                try { div += rec['_source']['learningOutcome'][0]['value']; } catch(err) {};
+                try { div += '<p><a class="btn" target="_blank" href="' + rec['_source']['presentation'][0]['applyTo'] + '">Apply Now</a>'; } catch (err) {};
+                try { div += '<h4>Course provider</h4><p><a target="_blank" href="' + rec['_source']['provider']['mlo:url'] + '">' + rec['_source']['provider']['dc:title'][0]['value'] + '</a></p><p>' + rec['_source']['provider']['dc:description'][0]['value'] + '</p>'
+                div += '</div>'; } catch(err) {};
+
+                if ( !$('#chosenrecord').length ) {
+                    $('.main').after('<div class="comparator"><div class="container"><div id="chosenrecord" class="row-fluid"></div></div></div>');
+                }
+                if ( $('#chosenrecord').children().length == 3 ) {
+                    $('#chosenrecord').children().first().remove();
+                } 
+                $('#chosenrecord').append(div);
+                $('html,body').animate({
+                    scrollTop: ( $('#chosenrecord').offset().top - 130) + 'px'
+                }, 'slow');
+                
+                showrelevant();
+            };
+            $.ajax({
+                type: "get",
+                url: "http://test.cottagelabs.com:9200/xcri/course/" + record,
+                success: showrecord
+            });
+        };
+
         var postsearch = function(event) {
             $('.feature_title:odd').css("color","#666");
             $('.row-fluid .feature_span:nth-child(4n+1)').css("margin-left",0);
+
             $('#fv_found').html($.fn.facetview.options["rawdata"]["hits"]["total"]);
+
+            $('html,body').animate({scrollTop: ( $('#fv').offset().top - 130) + 'px'}, 'fast');
+
+            $('.feature_title').tooltip();
+
+            var getrid = $('#facetview_filters').parent();
+            $('#facetview_filters').appendTo('#fv_choices');
+            getrid.remove();
+            $('#facetview_rightcol').removeClass('span9').addClass('span12');
+
+            $('.feature_title').bind('click',getrecord);
+
         };
+
+        // TODO: save / print this search
+        // TODO: some sort of what next option - e.g. read this stuff and contact these people now
+
+        // TODO: add some more search options
+        // filter by institute / age range / cost / entry requirements / course type
+        // instead of standard filters use some sort of autocomplete options thing
+        // do some sort of geo vis and filter based on post code / latlong
+        // do some sort of bubble vis based on graph view
 
         $('#fv').facetview({
             post_search_callback: postsearch,
@@ -36,19 +172,23 @@
             search_index: 'elasticsearch',
             datatype: 'json',
             facets: [
-                {'field': 'provider.dc:title.value.exact', 'display': 'institute', 'size': 100}
+                {'field': 'provider.dc:title.value.exact', 'display': 'institute', 'size': 10}
             ],
             paging: {
-                size: 12
+                size: 16
             },
             result_display: [
                 [
                     {
-                        "pre": '<div class="feature_box"><a class="feature_title" href="http://test.cottagelabs.com/xcri/view.html?id=',
+                        "pre": '<div class="feature_box"><a class="feature_title" href="',
                         "field": "_id",
-                        "post": '">'
                     },
                     {
+                        "pre": '" title="Read more about and compare this course - ',
+                        "field": "_id"
+                    },
+                    {
+                        "pre": '">',
                         "field": "dc:title.value",
                         "post": "</a></div>"
                     }
@@ -111,9 +251,18 @@
     .feature_content{
         text-align:justify;
     }
+    .comparator{
+        background-color:#ccc;
+        padding:20px 0 20px 0;
+    }
+    .relevant{
+        border-top:2px solid #999;
+        background-color:#ccc;
+        padding:20px 0 20px 0;
+    }
     #fv_searchbox{
         width:400px;
-        height:30px;
+        height:35px;
         font-size:30px;
         margin:0 auto 0 auto;
     }
@@ -130,9 +279,61 @@
         color:#999;
         font-size:30px;        
     }
+    #fv_choices{
+        display:none;
+        background-color:#eee;
+        margin-top:-40px;
+    }
+    #fv_postcode{
+        width:240px;
+        height:40px;
+        font-size:20px;
+        margin:10px 0px 0px 10px;
+        padding:0;
+    }
+    .bigbutton{
+        height:40px;
+        width:100px;
+        margin:0 0 0 -5px;
+        padding-top:20px;
+        font-size:18px;
+        margin-top:-1px;
+        -webkit-border-radius:0px;
+        -moz-border-radius:0px;
+        border-radius:0px;
+    }
+    .corner-top-left{
+        -webkit-border-radius:5px 0px 0px 0px;
+        -moz-border-radius:5px 0px 0px 0px;
+        border-radius:5px 0px 0px 0px;
+        margin-left:10px;
+    }
+    .corner-top-right{
+        -webkit-border-radius:0px 5px 0px 0px;
+        -moz-border-radius:0px 5px 0px 0px;
+        border-radius:0px 5px 0px 0px;
+    }
+    .corner-bottom-right{
+        -webkit-border-radius:0px 0px 5px 0px;
+        -moz-border-radius:0px 0px 5px 0px;
+        border-radius:0px 0px 5px 0px;
+    }
+    .corner-bottom-left{
+        -webkit-border-radius:0px 0px 0px 5px;
+        -moz-border-radius:0px 0px 0px 5px;
+        border-radius:0px 0px 0px 5px;
+        margin-left:10px;
+        margin-top:-1px;
+    }
+    #searchnow{
+        margin:10px 0 0 10px;
+        font-size:20px;
+        height:27px;
+        padding-top:8px;
+    }
     footer {
         border-top:2px solid #ccc;
-        margin:50px 0 0 0;
+        margin:0;
         padding:30px 0 50px 0;
 
         -webkit-background-size: 100px 100px;
@@ -180,8 +381,10 @@
                             <li><a href="/xcri/about.html">about</a></li>
                         </ul>
                         <div style="clear:both;">
-                            <input type="text" id="fv_searchbox" placeholder="find courses">
-                            <a href="#" style="padding-left:10px;"><i class="icon-chevron-down"></i></a>
+                            <input type="text" id="fv_searchbox" placeholder="find and compare courses">
+                            <a id="morechoices" title="choose more search options" href="#" style="padding-left:10px;">
+                                <i class="icon-chevron-down"></i>
+                            </a>
                             <div id="fv_found"></div>
                         </div>
                     </div>
@@ -196,17 +399,68 @@
         </div>
     </div>
 
-
+    <!-- this is a simple interface mockup where you provide I am AGE, I am at POSTCODE, I am interested in BLAH
+    then show results / map of courses available nearby 
+    the point being that THIS IS A USE CASE to which data should be conformed, whereas at the moment 
+    we have a feed that supplies mostly textual human-readable data, instead of what a feed would imply - e.g.
+    data well suited to this sort of use case
+    -->
+    
     <div class="container main">
-
         <div id="fv" class="content">
+            <div id="fv_choices">
+                <div class="row-fluid">
+                    <div class="span4">
+                        <p style="margin:10px;font-size:24px;font-weight:bold;">I am</p>
+                        <a class="btn bigbutton corner-top-left" href="#">under 16</a>
+                        <a class="btn bigbutton corner-top-right" href="#">16 to 18</a>
+                        <br>
+                        <a class="btn bigbutton corner-bottom-left" href="#">18 to 21</a>
+                        <a class="btn bigbutton corner-bottom-right" href="#">over 21</a>
+                        <br>
+                        <input type="text" id="fv_postcode" placeholder=" and my postcode is">
+                    </div>
+                    <div class="span8">
+                        <p style="margin:10px;font-size:24px;font-weight:bold;">and I like</p>
+                        <a class="btn bigbutton corner-top-left" href="#">maths and science</a>
+                        <a class="btn bigbutton" href="#">arts and writing</a>
+                        <a class="btn bigbutton" href="#">foreign languages</a>
+                        <a class="btn bigbutton" href="#">health</a>
+                        <a class="btn bigbutton corner-top-right" href="#">beauty and wellbeing</a>
+                        <br>
+                        <a class="btn bigbutton corner-bottom-left" href="#">animals</a>
+                        <a class="btn bigbutton" href="#">food</a>
+                        <a class="btn bigbutton" href="#">building and engineering</a>
+                        <a class="btn bigbutton" href="#">automotive</a>
+                        <a class="btn bigbutton corner-bottom-right" href="#">business</a>
+                        <br>
+                        <a class="btn btn-info" href="#" id="searchnow">search now</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
     <footer>
         <div class="container">
             <div class="row-fluid">
-                <div class="span12">
+                <div class="span4">
+                    <div class="well" style="height:100px;">
+                        <p>This is the <a target="_blank" href="http://cottagelabs.com">Cottage Labs</a> demonstrator of 
+                        use for the <a target="_blank" href="http://jisc.ac.uk">JISC</a>-funded XCRI-CAP feeds. Further 
+                        information about our project is available on our 
+                        <a target="_blank" href="http://cottagelabs.com/xcri/projects">XCRI project page</a>.</p>
+                    </div>
+                </div>
+                <div class="span4">
+                    <div class="well" style="height:100px;">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="span4">
+                    <div class="well" style="height:100px;">
+                        <p>and some more here</p>
+                    </div>
                 </div>
             </div>
         </div>
