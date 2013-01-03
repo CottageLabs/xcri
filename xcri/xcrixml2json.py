@@ -5,7 +5,7 @@ DC_NS = "http://purl.org/dc/elements/1.1/"
 MLO_NS = "http://purl.org/net/mlo"
 
 NS_11 = "http://xcri.org/profiles/catalog"
-NS_11 = "http://xcri.org/profiles/1.2/catalog"
+NS_12 = "http://xcri.org/profiles/1.2/catalog"
 
 def xcrixml2json(path):
     # read in the XML
@@ -118,9 +118,9 @@ def _ensure_text(parent, key):
     
 def _extract_text(element):
     if _is_dict(element):
-        return element.get("#text", "")
+        return _do_strip_cdata(element.get("#text", ""))
     else:
-        return element
+        return _do_strip_cdata(element)
 
 def _remove_dud_text(element):
     if _is_dict(element):
@@ -166,18 +166,18 @@ def _text_to_value(parent, element_name, idx=None):
     if idx is not None:
         element = parent[element_name][idx]
         if not _is_dict(element):
-            nd = {"value" : element}
+            nd = {"value" : _do_strip_cdata(element)}
             parent[element_name][idx] = nd
         else:
-            element["value"] = element.get("#text", "")
+            element["value"] = _do_strip_cdata(element.get("#text", ""))
             del element["#text"]
     else:
         element = parent[element_name]
         if not _is_dict(element):
-            nd = {"value" : element}
+            nd = {"value" : _do_strip_cdata(element)}
             parent[element_name] = nd
         else:
-            element["value"] = element.get("#text", "")
+            element["value"] = _do_strip_cdata(element.get("#text", ""))
             del element["#text"]
 
 def _descriptive_text_element(parent, element, idx):
@@ -200,12 +200,16 @@ def _temporal_element(parent, element):
 
 def _te_format(element):
     _rename_key(element, "@dtf", "dtf")
+    _strip_cdata(element, "dtf")
     _rename_key(element, "#text", "value")
+    _strip_cdata(element, "value")
     _remove_attributes(element)
 
 def _dte_format(element):
     _rename_key(element, "@xml:lang", "lang")
+    _strip_cdata(element, "lang")
     _rename_key(element, "@href", "href")
+    _strip_cdata(element, "href")
     _rename_key(element, "#text", "value")
     _remove_attributes(element)
     _strip_cdata(element, "value")
@@ -219,17 +223,32 @@ def _strip_cdata(element, key):
     if v.endswith("]]>"):
         v = v[:-3]
     element[key] = v
-    
+
+def _do_strip_cdata(v):
+    if v is None:
+        return
+    if v.startswith("<![CDATA["):
+        v = v[9:]
+    if v.endswith("]]>"):
+        v = v[:-3]
+    return v
 
 def _rename_key(parent, original, new_key, format=None):
     if not parent.has_key(original):
         return
     if not parent.has_key(new_key):
         parent[new_key] = format
+        
+    # now add or overwrite the value as necessary
     if type(parent[new_key]) == list:
-        parent[new_key].append(parent[original])
+        if type(parent[original]) == list:
+            for e in parent[original]:
+                parent[new_key].append(e)
+        else:
+            parent[new_key].append(parent[original])
     else:
-        parent[new_key] = parent[original]
+        parent[new_key] = parent[original]    
+    
     del parent[original]
 
 def _migrate_down(parent, target, to_move, format=None):
@@ -343,6 +362,48 @@ def cleanup_provider(provider):
     _ensure_list(provider, "course")
     for course in provider.get('course', []):
         cleanup_course(course)
+
+def cleanup_description(parent, desc, idx):
+    # first see if we need to crosswalk to another element based on the field value
+    # description.type=aim -> mlo:objective
+    # description.type=applicationProcedure -> applicationProcedure
+    # description.type=assessmentStrategy -> mlo:assessment
+    # description.type=learningOutcome -> learningOutcome
+    # description.type=prerequisites -> mlo:prerequisite
+    # description.type=regulations -> regulations
+    # some of these 1.1 to 1.2 crosswalks are encoded in the dc:description field
+    # like dc:description = "aim: to do something"
+    
+    # all the target formats are descriptive text elements, so do that conversion first
+    _descriptive_text_element(parent, desc, idx)
+    
+    if parent[desc][idx]['value'].strip().startswith("aim:"):
+        _desc_copy(parent, "mlo:objective", desc, idx, "aim:")
+        return True
+    elif parent[desc][idx]['value'].strip().startswith("applicationProcedure:"):
+        _desc_desc_copy(parent, "applicationProcedure", desc, idx, "applicationProcedure:")
+        return True
+    elif parent[desc][idx]['value'].strip().startswith("assessmentStrategy:"):
+        _desc_copy(parent, "mlo:assessment", desc, idx, "assessmentStrategy:")
+        return True
+    elif parent[desc][idx]['value'].strip().startswith("learningOutcome:"):
+        _desc_copy(parent, "learningOutcome", desc, idx, "learningOutcome:")
+        return True
+    elif parent[desc][idx]['value'].strip().startswith("prerequisites:"):
+        _desc_copy(parent, "mlo:prerequisite", desc, idx, "prerequisites:")
+        return True
+    elif parent[desc][idx]['value'].strip().startswith("regulations:"):
+        _desc_copy(parent, "regulations", desc, idx, "regulations:")
+        return True
+    return False
+
+def _desc_copy(parent, target, source, idx, sub):
+    parent[source][idx]['value'] = parent[source][idx]['value'][len(sub):].strip()
+    if not parent.has_key(target):
+        parent[target] = [parent[source][idx]]
+    else:
+        _ensure_list(parent, target)
+        parent[target].append(parent[source][idx])
     
 def cleanup_course(course):
     """
@@ -394,8 +455,15 @@ def cleanup_course(course):
     
     _prepend_namespace(course, "description", "dc", [])
     _ensure_list(course, "dc:description")
+    removable_descs = []
     for i in range(len(course.get('dc:description', []))):
-        _descriptive_text_element(course, "dc:description", i)
+        remove = cleanup_description(course, "dc:description", i)
+        if remove:
+            removable_descs.append(i)
+    
+    removable_descs.sort(reverse=True)
+    for i in removable_descs:
+        del course['dc:description'][i]
         
     _prepend_namespace(course, "identifier", "dc", [])
     _ensure_list(course, "dc:identifier")
@@ -526,6 +594,9 @@ def cleanup_subject(parent, subject, idx):
     _rename_key(parent[subject][idx], "@identifier", "identifier")
     _rename_key(parent[subject][idx], "@xml:lang", "lang")
     _remove_attributes(parent[subject][idx])
+    if parent[subject][idx]['value'].startswith("LDCS class:"):
+        parent[subject][idx]['value'] = parent[subject][idx]['value'][11:].strip()
+        parent[subject][idx]['type'] = "LDCS"
     
 def cleanup_image(image):
     """
